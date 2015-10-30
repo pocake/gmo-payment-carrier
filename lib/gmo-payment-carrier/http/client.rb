@@ -15,7 +15,7 @@ module GMOPaymentCarrier
       def connection
         @connection ||= Faraday.new(faraday_client_options) do |connection|
           connection.request @request if @request.present?
-          connection.response @response if @Response.present?
+          connection.response @response if @response.present?
           connection.adapter Faraday.default_adapter
         end
       end

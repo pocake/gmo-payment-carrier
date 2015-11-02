@@ -2,6 +2,71 @@ module GMOPaymentCarrier
   module AU
     class Parameter
       include ActiveModel:Model
+
+      # バージョン
+      attr_accessor :version
+      # ショップID
+      attr_accessor :shop_id
+      # ショップパスワード
+      attr_accessor :shop_password
+      # オーダーID
+      attr_accessor :shop_password
+      # 課金利用金額
+      attr_accessor :ammount
+      # 課金税送料
+      attr_accessor :tax
+      # 初回課金利用金額
+      attr_accessor :first_amount
+      # 初回課金税送料
+      attr_accessor :first_tax
+      # 取引ID
+      attr_accessor :access_id
+      # 取引パスワード
+      attr_accessor :access_pass
+      # サイトID
+      attr_accessor :site_id
+      # サイトパスワード
+      attr_accessor :site_pass
+      # 会員ID
+      attr_accessor :member_id
+      # 会員名
+      attr_accessor :member_name
+      # 会員作成フラグ
+      attr_accessor :create_member
+      # 加盟店自由項目1
+      attr_accessor :client_field_1
+      # 加盟店自由項目2
+      attr_accessor :client_Field_2
+      # 加盟店自由項目3
+      attr_accessor :client_Field_3
+      # 摘要
+      attr_accessor :commodity
+      # 課金タイミング区分
+      attr_accessor :account_timing_kbn
+      # 課金タイミング
+      attr_accessor :account_timing
+      # 初回課金日
+      attr_accessor :first_account_date
+      # 決済結果戻しURL
+      attr_accessor :ret_url
+      # 支払開始期限秒
+      attr_accessor :payment_term_sec
+      # 表示サービス名
+      attr_accessor :service_name
+      # 表示電話番号
+      attr_accessor :service_tel
+      # 現状態
+      attr_accessor :status
+      # 処理日時
+      attr_accessor :tran_date
+      # 継続課金ID
+      attr_accessor :aucontinu_accountid
+      # 支払方法
+      attr_accessor :au_pay_method
+      # エラーコード
+      attr_accessor :err_code
+      # エラー詳細コード
+      attr_accessor :err_info
     end
   end
 end

@@ -10,9 +10,14 @@ module GMOPaymentCarrier
 
     def self.decode(parameter)
       {}.tap do |hash|
-        parameter.class.attribute_names.each do |v|
-          value = parameter.send(v)
-          hash[Const::PARAM_NAMES[v]] = value.is_a?(String) ? value.encode('Shift_JIS') : value
+        parameter.class.attribute_names.each do |attribute_name|
+          key = Const::PARAM_NAMES[attribute_name]
+          next if key.blank?
+
+          value = parameter.send(attribute_name)
+          next if value.blank?
+
+          hash[key] = value.is_a?(String) ? value.encode('Shift_JIS') : value
         end
       end
     end

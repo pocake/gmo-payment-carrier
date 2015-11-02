@@ -2,21 +2,24 @@ module GMOPaymentCarrier
   module Const
     # TODO
     API_ENDPOINT = 'http://example.com'
-
-    API_INFOS = {
-      entry_tran_au_continuance: {
-        path: '/payment/EntryTranAuContinuance.idPass',
-        method: :post
-      },
-      exec_tran_au_continuance: {
-        path: '/payment/ExecTranAuContinuance.idPass',
-        method: :post
-      },
-      au_continuance_cancel: {
-        path: '/payment/AuContinuanceCancel.idPass',
-        method: :post
-      }
-    }
+    API_KIND_ENTRY_TRAN_AU_CONTINUANCE = :entry_tran_au_continuance
+    API_KIND_EXEC_TRAN_AU_CONTINUANCE  = :exec_tran_au_continuance
+    API_KIND_AU_CONTINUANCE_CANCEL     = :au_continuance_cancel
+    API_INFOS =
+      {}.tap do |hash|
+        hash[API_KIND_ENTRY_TRAN_AU_CONTINUANCE] = {
+          path: '/payment/EntryTranAuContinuance.idPass',
+          method: :post
+        }
+        hash[API_KIND_EXEC_TRAN_AU_CONTINUANCE] = {
+          path: '/payment/ExecTranAuContinuance.idPass',
+          method: :post
+        }
+        hash[API_KIND_AU_CONTINUANCE_CANCEL] = {
+          path: '/payment/AuContinuanceCancel.idPass',
+          method: :post
+        }
+      end
 
     PARAM_NAMES = {
       version:                'Version',
@@ -68,7 +71,6 @@ module GMOPaymentCarrier
       sb_tracking_id:         'SbTrackingId',
       start_charge_month:     'StartChargeMonth'
     }
-
     PARAM_NAMES_INVERTED = PARAM_NAMES.invert
   end
 end

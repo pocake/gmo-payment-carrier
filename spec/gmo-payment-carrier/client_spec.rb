@@ -7,7 +7,7 @@ describe GMOPaymentCarrier::Client do
     describe "AU" do
       it do
         parameter = GMOPaymentCarrier::AU::Parameter.new
-        parameter.api_kind = :entry_tran_au_continuance
+        parameter.api_kind = GMOPaymentCarrier::Const::API_KIND_ENTRY_TRAN_AU_CONTINUANCE
         parameter.shop_id = 'hogehoge'
         parameter.shop_pass = 'hogehoge'
         parameter.order_id = 'hogehoge'

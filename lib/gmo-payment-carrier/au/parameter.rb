@@ -4,72 +4,78 @@ module GMOPaymentCarrier
       include ActiveModel::Model
       validates_with GMOPaymentCarrier::AU::Validator
 
-      # API種別
-      attr_accessor :api_kind
-      # バージョン
-      attr_accessor :version
-      # ショップID
-      attr_accessor :shop_id
-      # ショップパスワード
-      attr_accessor :shop_pass
-      # オーダーID
-      attr_accessor :order_id
-      # 課金利用金額
-      attr_accessor :amount
-      # 課金税送料
-      attr_accessor :tax
-      # 初回課金利用金額
-      attr_accessor :first_amount
-      # 初回課金税送料
-      attr_accessor :first_tax
-      # 取引ID
-      attr_accessor :access_id
-      # 取引パスワード
-      attr_accessor :access_pass
-      # サイトID
-      attr_accessor :site_id
-      # サイトパスワード
-      attr_accessor :site_pass
-      # 会員ID
-      attr_accessor :member_id
-      # 会員名
-      attr_accessor :member_name
-      # 会員作成フラグ
-      attr_accessor :create_member
-      # 加盟店自由項目1
-      attr_accessor :client_field_1
-      # 加盟店自由項目2
-      attr_accessor :client_Field_2
-      # 加盟店自由項目3
-      attr_accessor :client_Field_3
-      # 摘要
-      attr_accessor :commodity
-      # 課金タイミング区分
-      attr_accessor :account_timing_kbn
-      # 課金タイミング
-      attr_accessor :account_timing
-      # 初回課金日
-      attr_accessor :first_account_date
-      # 決済結果戻しURL
-      attr_accessor :ret_url
-      # 支払開始期限秒
-      attr_accessor :payment_term_sec
-      # 表示サービス名
-      attr_accessor :service_name
-      # 表示電話番号
-      attr_accessor :service_tel
-      # 現状態
-      attr_accessor :status
-      # 処理日時
-      attr_accessor :tran_date
-      # 継続課金ID
-      attr_accessor :aucontinu_accountid
-      # 支払方法
-      attr_accessor :au_pay_method
-      # エラーコード
-      attr_accessor :err_code
-      # エラー詳細コード
-      attr_accessor :err_info
+      def self.attribute_names
+      [
+        # API種別
+        :api_kind,
+        # バージョン
+        :version,
+        # ショップID
+        :shop_id,
+        # ショップパスワード
+        :shop_pass,
+        # オーダーID
+        :order_id,
+        # 課金利用金額
+        :amount,
+        # 課金税送料
+        :tax,
+        # 初回課金利用金額
+        :first_amount,
+        # 初回課金税送料
+        :first_tax,
+        # 取引ID
+        :access_id,
+        # 取引パスワード
+        :access_pass,
+        # サイトID
+        :site_id,
+        # サイトパスワード
+        :site_pass,
+        # 会員ID
+        :member_id,
+        # 会員名
+        :member_name,
+        # 会員作成フラグ
+        :create_member,
+        # 加盟店自由項目1
+        :client_field_1,
+        # 加盟店自由項目2
+        :client_Field_2,
+        # 加盟店自由項目3
+        :client_Field_3,
+        # 摘要
+        :commodity,
+        # 課金タイミング区分
+        :account_timing_kbn,
+        # 課金タイミング
+        :account_timing,
+        # 初回課金日
+        :first_account_date,
+        # 決済結果戻しURL
+        :ret_url,
+        # 支払開始期限秒
+        :payment_term_sec,
+        # 表示サービス名
+        :service_name,
+        # 表示電話番号
+        :service_tel,
+        # 現状態
+        :status,
+        # 処理日時
+        :tran_date,
+        # 継続課金ID
+        :aucontinu_accountid,
+        # 支払方法
+        :au_pay_method,
+        # エラーコード
+        :err_code,
+        # エラー詳細コード
+        :err_info
+      ]
+      end
+
+      attr_accessor(*attribute_names)
 
       def exists_error?
         self.err_code.present?

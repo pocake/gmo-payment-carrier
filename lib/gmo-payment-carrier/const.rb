@@ -1,5 +1,23 @@
 module GMOPaymentCarrier
   module Const
+    # TODO
+    API_ENDPOINT = 'http://example.com'
+
+    API_INFOS = {
+      entry_tran_au_continuance: {
+        path: '/payment/EntryTranAuContinuance.idPass',
+        method: :post
+      },
+      exec_tran_au_continuance: {
+        path: '/payment/ExecTranAuContinuance.idPass',
+        method: :post
+      },
+      au_continuance_cancel: {
+        path: '/payment/AuContinuanceCancel.idPass',
+        method: :post
+      }
+    }
+
     PARAM_NAMES = {
       version:                'Version',
       shop_id:                'ShopID',
@@ -51,19 +69,6 @@ module GMOPaymentCarrier
       start_charge_month:     'StartChargeMonth'
     }
 
-    API_INFOS = {
-      entry_tran_au_continuance: {
-        path: '/payment/EntryTranAuContinuance.idPass',
-        method: :post
-      },
-      exec_tran_au_continuance: {
-        path: '/payment/ExecTranAuContinuance.idPass',
-        method: :post
-      },
-      au_continuance_cancel: {
-        path: '/payment/AuContinuanceCancel.idPass',
-        method: :post
-      }
-    }
+    PARAM_NAMES_INVERTED = PARAM_NAMES.invert
   end
 end

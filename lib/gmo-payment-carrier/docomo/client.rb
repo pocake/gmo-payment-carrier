@@ -1,5 +1,7 @@
 module GMOPaymentCarrier
-  class Docomo < Base
+  class Client
+    extend GMOPaymentCarrier::ClientHelper
+
     def entry_tran_docomo
     end
 

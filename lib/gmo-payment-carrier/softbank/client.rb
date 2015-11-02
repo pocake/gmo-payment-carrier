@@ -1,5 +1,7 @@
 module GMOPaymentCarrier
-  class SoftBank < Base
+  class Client
+    extend GMOPaymentCarrier::ClientHelper
+
     def entry_tran_sb_continuance
     end
 

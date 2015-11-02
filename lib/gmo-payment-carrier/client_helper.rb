@@ -1,5 +1,5 @@
 module GMOPaymentCarrier
-  class Base
+  module ClientHelper
 
     private
 

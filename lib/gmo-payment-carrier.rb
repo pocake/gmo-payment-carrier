@@ -1,9 +1,11 @@
-require "activesupport"
+require "active_support"
+require "active_model"
 require "faraday"
 
 require "gmo-payment-carrier/version"
 require "gmo-payment-carrier/const"
-require "gmo-payment-carrier/client_helper"
+require "gmo-payment-carrier/client"
+require "gmo-payment-carrier/converter"
 require "gmo-payment-carrier/au"
 require "gmo-payment-carrier/docomo"
 require "gmo-payment-carrier/softbank"

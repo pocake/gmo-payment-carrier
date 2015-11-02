@@ -1,18 +1,21 @@
 module GMOPaymentCarrier
   module AU
     class Parameter
-      include ActiveModel:Model
+      include ActiveModel::Model
+      validates_with GMOPaymentCarrier::AU::Validator
 
+      # API種別
+      attr_accessor :api_kind
       # バージョン
       attr_accessor :version
       # ショップID
       attr_accessor :shop_id
       # ショップパスワード
-      attr_accessor :shop_password
+      attr_accessor :shop_pass
       # オーダーID
-      attr_accessor :shop_password
+      attr_accessor :order_id
       # 課金利用金額
-      attr_accessor :ammount
+      attr_accessor :amount
       # 課金税送料
       attr_accessor :tax
       # 初回課金利用金額
@@ -67,6 +70,10 @@ module GMOPaymentCarrier
       attr_accessor :err_code
       # エラー詳細コード
       attr_accessor :err_info
+
+      def exists_error?
+        self.err_code.present?
+      end
     end
   end
 end

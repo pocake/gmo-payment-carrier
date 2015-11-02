@@ -50,5 +50,20 @@ module GMOPaymentCarrier
       sb_tracking_id:         'SbTrackingId',
       start_charge_month:     'StartChargeMonth'
     }
+
+    API_INFOS = {
+      entry_tran_au_continuance: {
+        path: '/payment/EntryTranAuContinuance.idPass',
+        method: :post
+      },
+      exec_tran_au_continuance: {
+        path: '/payment/ExecTranAuContinuance.idPass',
+        method: :post
+      },
+      au_continuance_cancel: {
+        path: '/payment/AuContinuanceCancel.idPass',
+        method: :post
+      }
+    }
   end
 end

@@ -38,7 +38,13 @@ module GMOPaymentCarrier
         # エラーコード
         :err_code,
         # エラー詳細コード
-        :err_info
+        :err_info,
+        # トークン
+        :token,
+        # 支払手続き開始IFのURL
+        :start_url,
+        # 支払開始期限日時
+        :start_limit_date
       ] | extension_attribute_names
     end
 
@@ -46,12 +52,29 @@ module GMOPaymentCarrier
       raise NotImplementedError.new("Must implement #{self.class}##{__method__}")
     end
 
-    def initialize(api_kind:)
+    def initialize(api_kind)
       @api_kind = api_kind
     end
 
     def exists_error?
-      self.err_code.present?
+      self.err_info.present?
+    end
+
+    def error_message
+      return nil unless exists_error?
+
+      {}.tap { |h|
+        self.err_info.split('|').each do |v|
+          msg = Const::ERROR_MESSAGES[v]
+          h[v] = msg || 'there is no definition of the message.'
+        end
+      }.inspect
+    end
+
+    def invalid_message
+      return nil if errors.blank?
+
+      errors.to_h.inspect
     end
   end
 end

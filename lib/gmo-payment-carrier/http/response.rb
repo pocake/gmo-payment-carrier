@@ -26,7 +26,7 @@ module GMOPaymentCarrier
       end
 
       def status_message
-        Rack::Utils::HTTP_STATUS_CODES[status]
+        ::Rack::Utils::HTTP_STATUS_CODES[status]
       end
     end
   end

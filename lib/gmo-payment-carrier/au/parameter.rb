@@ -39,6 +39,10 @@ module GMOPaymentCarrier
       end
 
       attr_accessor(*(attribute_names + extension_attribute_names))
+
+      def first_account_date
+        @first_account_date.try(:strftime, '%Y%m%d')
+      end
     end
   end
 end

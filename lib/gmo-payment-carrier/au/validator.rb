@@ -1,6 +1,6 @@
 module GMOPaymentCarrier
   module AU
-    class Validator < ActiveModel::Validator
+    class Validator < GMOPaymentCarrier::Validator
       def validate(record)
         case record.api_kind
         when :entry_tran_au_continuance
@@ -15,27 +15,47 @@ module GMOPaymentCarrier
       private
 
         def validate_entry_tran_au_continuance(record)
-          if record.shop_id.blank?
-            record.errors[:shop_id] << "can't be blank shop_id"
-          end
-          if record.shop_pass.blank?
-            record.errors[:shop_pass] << "can't be blank shop_pass"
-          end
-          if record.order_id.blank?
-            record.errors[:order_id] << "can't be blank order_id"
-          end
-          if record.amount.blank?
-            record.errors[:order_id] << "can't be blank amount"
-          end
-          if record.first_amount.blank?
-            record.errors[:order_id] << "can't be blank first_amount"
-          end
+          validate_presence(
+            record,
+            [
+              :shop_id,
+              :shop_pass,
+              :order_id,
+              :amount,
+              :first_amount
+            ]
+          )
         end
 
         def validate_exec_tran_au_continuance(record)
+          validate_presence(
+            record,
+            [
+              :shop_id,
+              :shop_pass,
+              :access_id,
+              :access_pass,
+              :order_id,
+              :account_timing_kbn,
+              :account_timing,
+              :first_account_date,
+              :ret_url,
+              :service_name
+            ]
+          )
         end
 
         def validate_au_continuance_cancel(record)
+          validate_presence(
+            record,
+            [
+              :shop_id,
+              :shop_pass,
+              :access_id,
+              :access_pass,
+              :order_id
+            ]
+          )
         end
     end
   end

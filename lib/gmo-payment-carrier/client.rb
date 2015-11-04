@@ -1,25 +1,29 @@
 module GMOPaymentCarrier
   class Client
-    def initialize(num_of_retry: 0)
+    def initialize(num_of_retry: 0, safe_invalid: false)
       @num_of_retry = num_of_retry
     end
 
     def call_api(paramer)
       # TODO: 独自Error作る
-      raise "hogehoe" if paramer.invalid?
+      raise "hogehoge" if paramer.invalid?
 
       api_info = api_info(paramer.api_kind)
-      api_result =
+      api_response =
         http_client.send(
           api_info[:method],
           path: api_info[:path],
           params: decode(paramer)
         )
-      result = encode(paramer, api_result)
+      if api_response.status >= 400
+        raise "hogehoge"
+      end
+
+      result = encode(paramer, api_response.body)
 
       if result.exists_error?
         # TODO: 独自Error作る
-        raise "hogehoe"
+        raise "hogehoge"
       end
 
       result

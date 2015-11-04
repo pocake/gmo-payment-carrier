@@ -2,6 +2,7 @@ module GMOPaymentCarrier
   class Parameter
     include ActiveModel::Model
 
+    # API種別
     attr_accessor :api_kind
 
     def self.attribute_names
@@ -42,10 +43,8 @@ module GMOPaymentCarrier
     end
 
     def self.extension_attribute_names
-      []
+      raise NotImplementedError.new("Must implement #{self.class}##{__method__}")
     end
-
-    attr_accessor(*attribute_names)
 
     def initialize(api_kind:)
       @api_kind = api_kind

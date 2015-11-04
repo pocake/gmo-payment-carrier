@@ -37,6 +37,8 @@ module GMOPaymentCarrier
           :au_pay_method
         ]
       end
+
+      attr_accessor(*(attribute_names + extension_attribute_names))
     end
   end
 end

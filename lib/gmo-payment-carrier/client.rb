@@ -15,12 +15,11 @@ module GMOPaymentCarrier
           path: api_info[:path],
           params: decode(paramer)
         )
-      if api_response.status >= 400
+      if api_response.more_than_400?
         raise "hogehoge"
       end
 
       result = encode(paramer, api_response.body)
-
       if result.exists_error?
         # TODO: 独自Error作る
         raise "hogehoge"
@@ -43,10 +42,10 @@ module GMOPaymentCarrier
         GMOPaymentCarrier::Converter.decode(paramer)
       end
 
-      def encode(paramer, params)
+      def encode(paramer, query_string)
         GMOPaymentCarrier::Converter.encode(
           klass: paramer.class,
-          params: api_result
+          query_string: query_string
         )
       end
   end

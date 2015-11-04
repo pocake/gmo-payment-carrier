@@ -21,6 +21,10 @@ module GMOPaymentCarrier
         @raw_status
       end
 
+      def more_than_400?
+        @raw_status >= 400
+      end
+
       def status_message
         Rack::Utils::HTTP_STATUS_CODES[status]
       end

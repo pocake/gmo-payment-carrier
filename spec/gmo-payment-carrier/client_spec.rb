@@ -1,5 +1,3 @@
-require "spec_helper"
-
 describe GMOPaymentCarrier::Client do
   describe "#call_api" do
     let(:http_client) { double('http_client') }

@@ -1,5 +1,3 @@
-require "spec_helper"
-
 describe GMOPaymentCarrier::AU::Parameter do
   describe 'entry_tran_au_continuance' do
     let(:target) { GMOPaymentCarrier::AU::Parameter.new(GMOPaymentCarrier::Const::AU::API_KIND_ENTRY) }

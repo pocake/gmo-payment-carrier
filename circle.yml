@@ -1,0 +1,21 @@
+machine:
+  timezone:
+    Asia/Tokyo
+
+  ruby:
+    version:
+      2.2.3
+
+dependencies:
+  cache_directories:
+    - "vendor/bundle"
+
+  pre:
+    - gem install bundler --pre
+
+  override:
+    - bundle install -j4 --path vendor/bundle
+
+test:
+  override:
+    - bundle exec rake spec

@@ -57,7 +57,7 @@ describe GMOPaymentCarrier::AU::Parameter do
       target.order_id = 'dummmy order_id'
       target.account_timing_kbn = 'dummmy account_timing_kbn'
       target.account_timing = 'dummmy account_timing'
-      target.first_account_date = 'dummmy first_account_date'
+      target.first_account_date = Time.now
       target.ret_url = 'dummmy ret_url'
       target.service_name = 'dummmy service_name'
 

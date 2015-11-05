@@ -3,12 +3,14 @@ module GMOPaymentCarrier
     class Validator < GMOPaymentCarrier::Validator
       def validate(record)
         case record.api_kind
-        when :entry_tran_au_continuance
+        when GMOPaymentCarrier::Const::AU::API_KIND_ENTRY
           validate_entry_tran_au_continuance(record)
-        when :exec_tran_au_continuance
+        when GMOPaymentCarrier::Const::AU::API_KIND_EXEC
           validate_exec_tran_au_continuance(record)
-        when :au_continuance_cancel
+        when GMOPaymentCarrier::Const::AU::API_KIND_CANCEL
           validate_au_continuance_cancel(record)
+        else
+          raise GMOPaymentCarrier::ValidationError.new("It is unexpected api_kind. api_kind=#{record.api_kind}")
         end
       end
 
@@ -40,7 +42,8 @@ module GMOPaymentCarrier
               :account_timing,
               :first_account_date,
               :ret_url,
-              :service_name
+              :service_name,
+              :service_tel
             ]
           )
         end

@@ -4,6 +4,8 @@ module GMOPaymentCarrier
       klass =
         if Const::AU::API_KINDS.include?(api_kind)
           GMOPaymentCarrier::AU::Parameter
+        elsif Const::Docomo::API_KINDS.include?(api_kind)
+          GMOPaymentCarrier::Docomo::Parameter
         end
 
       klass.new(api_kind).tap do |result|

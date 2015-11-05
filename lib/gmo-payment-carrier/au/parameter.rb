@@ -5,10 +5,12 @@ module GMOPaymentCarrier
 
       def self.extension_attribute_names
         [
-          # 課金利用金額
-          :amount,
-          # 課金税送料
-          :tax,
+          # サイトID
+          :site_id,
+          # サイトパスワード
+          :site_pass,
+          # 会員作成フラグ
+          :create_member,
           # 初回課金利用金額
           :first_amount,
           # 初回課金税送料
@@ -23,8 +25,6 @@ module GMOPaymentCarrier
           :account_timing,
           # 初回課金日
           :first_account_date,
-          # 決済結果戻しURL
-          :ret_url,
           # 支払開始期限秒
           :payment_term_sec,
           # 表示サービス名

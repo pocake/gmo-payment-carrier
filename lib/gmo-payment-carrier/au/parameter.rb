@@ -25,8 +25,6 @@ module GMOPaymentCarrier
           :account_timing,
           # 初回課金日
           :first_account_date,
-          # 支払開始期限秒
-          :payment_term_sec,
           # 表示サービス名
           :service_name,
           # 表示電話番号
@@ -38,7 +36,7 @@ module GMOPaymentCarrier
         ]
       end
 
-      attr_accessor(*(attribute_names + extension_attribute_names))
+      attr_accessor(*attribute_names)
 
       def first_account_date
         @first_account_date.try(:strftime, '%Y%m%d')

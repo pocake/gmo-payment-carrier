@@ -1,16 +1,12 @@
 module GMOPaymentCarrier
   class Client
-    def initialize(endpoint:, num_of_retry: 3, safe_invalid: false)
+    def initialize(endpoint:, num_of_retry: 3)
       @endpoint     = endpoint
       @num_of_retry = num_of_retry
-      @safe_invalid = safe_invalid
     end
 
     def call_api(paramer)
-      if paramer.invalid?
-        return paramer if @safe_invalid
-        raise ValidationError.new(paramer.invalid_message)
-      end
+      raise ValidationError.new(paramer.invalid_message) if paramer.invalid?
 
       api_info = api_info(paramer.api_kind)
       api_response = nil
@@ -22,16 +18,10 @@ module GMOPaymentCarrier
             params: decode(paramer)
           )
       end
-
-      if api_response.more_than_400?
-        raise HTTPError.new("#{api_response.status}:#{api_response.status_message}")
-      end
+      raise HTTPError.new("#{api_response.status}:#{api_response.status_message}") if api_response.more_than_400?
 
       result = encode(paramer.api_kind, api_response.body)
-      if result.exists_error?
-        raise GMOSystemError.new(result.error_message)
-      end
-
+      raise GMOSystemError.new(result.error_message) if result.exists_error?
       result
     end
 

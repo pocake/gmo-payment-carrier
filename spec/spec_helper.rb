@@ -1,8 +1,8 @@
-require "gmo-payment-carrier"
-require "pry"
-require "ffaker"
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 
-RSpec.configure do |config|
-end
+require "gmo-payment-carrier"
+require "pry"
+require "ffaker"

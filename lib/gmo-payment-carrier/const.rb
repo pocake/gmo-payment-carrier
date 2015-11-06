@@ -1,6 +1,5 @@
 module GMOPaymentCarrier
   module Const
-    # TODO
     PRODUCITON_API_ENDPOINT = 'https://p01.mul-pay.jp'
     TEST_API_ENDPOINT       = 'https://pt01.mul-pay.jp'
 
@@ -36,11 +35,34 @@ module GMOPaymentCarrier
       FIRST_MONTH_FREE_FLAG_OFF = 0 # 初月無料にしない
       FIRST_MONTH_FREE_FLAG_ON  = 1 # 初月無料にする
       # 確定基準日
-      CONFIRM_BASE_DATE_10        = 10
-      CONFIRM_BASE_DATE_15        = 15
-      CONFIRM_BASE_DATE_20        = 20
-      CONFIRM_BASE_DATE_25        = 25
-      CONFIRM_BASE_DATE_31        = 31
+      CONFIRM_BASE_DATE_10      = 10
+      CONFIRM_BASE_DATE_15      = 15
+      CONFIRM_BASE_DATE_20      = 20
+      CONFIRM_BASE_DATE_25      = 25
+      CONFIRM_BASE_DATE_31      = 31
+    end
+
+    module SoftBank
+      # API種別
+      API_KIND_ENTRY  = :entry_tran_sb_continuance
+      API_KIND_EXEC   = :exec_tran_docomo_continuance
+      API_KIND_CANCEL = :sb_continuance_cancel
+
+      API_KINDS = [
+        API_KIND_ENTRY,
+        API_KIND_EXEC,
+        API_KIND_CANCEL
+      ]
+
+      # 初月無料区分
+      FIRST_MONTH_FREE_FLAG_OFF = 0 # 課金する
+      FIRST_MONTH_FREE_FLAG_ON  = 1 # 課金しない(申し込みのみ)
+      # 課金基準日
+      CHARGE_DAY_10             = 10
+      CHARGE_DAY_15             = 15
+      CHARGE_DAY_20             = 20
+      CHARGE_DAY_25             = 25
+      CHARGE_DAY_31             = 31
     end
 
     API_INFOS =
@@ -67,6 +89,18 @@ module GMOPaymentCarrier
         }
         h[Docomo::API_KIND_CANCEL] = {
           path: '/payment/DocomoContinuanceUserEnd.idPass',
+          method: :post
+        }
+        h[SoftBank::API_KIND_ENTRY] = {
+          path: '/payment/EntryTranSbContinuance.idPass',
+          method: :post
+        }
+        h[SoftBank::API_KIND_EXEC] = {
+          path: '/payment/ExecTranSbContinuance.idPass',
+          method: :post
+        }
+        h[SoftBank::API_KIND_CANCEL] = {
+          path: '/payment/SbContinuanceCancel.idPass',
           method: :post
         }
       end

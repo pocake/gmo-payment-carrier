@@ -44,7 +44,9 @@ module GMOPaymentCarrier
         # 支払手続き開始IFのURL
         :start_url,
         # 支払開始期限日時
-        :start_limit_date
+        :start_limit_date,
+        # 支払開始期限秒
+        :payment_term_sec
       ] | extension_attribute_names
     end
 

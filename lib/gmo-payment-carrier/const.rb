@@ -45,7 +45,7 @@ module GMOPaymentCarrier
     module SoftBank
       # API種別
       API_KIND_ENTRY  = :entry_tran_sb_continuance
-      API_KIND_EXEC   = :exec_tran_docomo_continuance
+      API_KIND_EXEC   = :exec_tran_sb_continuance
       API_KIND_CANCEL = :sb_continuance_cancel
 
       API_KINDS = [

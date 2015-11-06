@@ -6,6 +6,10 @@ module GMOPaymentCarrier
           GMOPaymentCarrier::AU::Parameter
         elsif Const::Docomo::API_KINDS.include?(api_kind)
           GMOPaymentCarrier::Docomo::Parameter
+        elsif Const::SoftBank::API_KINDS.include?(api_kind)
+          GMOPaymentCarrier::SoftBank::Parameter
+        else
+          raise ArgumentError.new("api_kind invalid. api_kind: #{api_kind}")
         end
 
       klass.new(api_kind).tap do |result|

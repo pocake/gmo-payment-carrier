@@ -175,7 +175,7 @@ describe GMOPaymentCarrier::Client do
     end
 
     context "Docomo" do
-      context "entry_tran_au_continuance" do
+      context "entry_tran_docomo_continuance" do
         let(:parameter) { GMOPaymentCarrier::Docomo::Parameter.new(GMOPaymentCarrier::Const::Docomo::API_KIND_ENTRY) }
 
         it 'return success' do
@@ -239,6 +239,99 @@ describe GMOPaymentCarrier::Client do
 
       context "docomo_continuance_user_end" do
         let(:parameter) { GMOPaymentCarrier::Docomo::Parameter.new(GMOPaymentCarrier::Const::Docomo::API_KIND_CANCEL) }
+
+        it 'return success' do
+          response = double('response')
+          body = "OrderID=#{order_id}&Status=#{status}&ErrCode=&ErrInfo="
+          allow(response).to receive(:more_than_400?).and_return(false)
+          allow(response).to receive(:body).and_return(body)
+          allow(http_client).to receive(:post).and_return(response)
+          allow(client).to receive(:http_client).and_return(http_client)
+
+          parameter.shop_id = shop_id
+          parameter.shop_pass = shop_pass
+          parameter.access_id = access_id
+          parameter.access_pass = access_pass
+          parameter.order_id = order_id
+
+          result = client.call_api(parameter)
+          expect(result.order_id).to eq(order_id)
+          expect(result.status).to eq(status)
+          expect(result.err_code.blank?).to be true
+          expect(result.err_info.blank?).to be true
+        end
+
+        it 'return ValidationError' do
+          expect { client.call_api(parameter) }.to raise_error(GMOPaymentCarrier::ValidationError)
+        end
+      end
+    end
+
+    context "SoftBank" do
+      context "entry_tran_sb_continuance" do
+        let(:parameter) { GMOPaymentCarrier::SoftBank::Parameter.new(GMOPaymentCarrier::Const::SoftBank::API_KIND_ENTRY) }
+
+        it 'return success' do
+          response = double('response')
+          body = "AccessID=#{access_id}&AccessPass=#{access_pass}&ErrCode=&ErrInfo="
+          allow(response).to receive(:more_than_400?).and_return(false)
+          allow(response).to receive(:body).and_return(body)
+          allow(http_client).to receive(:post).and_return(response)
+          allow(client).to receive(:http_client).and_return(http_client)
+
+          parameter.shop_id = shop_id
+          parameter.shop_pass = shop_pass
+          parameter.order_id = order_id
+          parameter.amount = 100
+
+          result = client.call_api(parameter)
+          expect(result.access_id).to eq(access_id)
+          expect(result.access_pass).to eq(access_pass)
+          expect(result.err_code.blank?).to be true
+          expect(result.err_info.blank?).to be true
+        end
+
+        it 'return ValidationError' do
+          expect { client.call_api(parameter) }.to raise_error(GMOPaymentCarrier::ValidationError)
+        end
+      end
+
+      context "exec_tran_sb_continuance" do
+        let(:parameter) { GMOPaymentCarrier::SoftBank::Parameter.new(GMOPaymentCarrier::Const::SoftBank::API_KIND_EXEC) }
+
+        it 'return success' do
+          response = double('response')
+          body = "AccessID=#{access_id}&Token=#{token}&StartURL=#{start_url}&StartLimitDate=#{start_limit_date}&ErrCode=&ErrInfo="
+          allow(response).to receive(:more_than_400?).and_return(false)
+          allow(response).to receive(:body).and_return(body)
+          allow(http_client).to receive(:post).and_return(response)
+          allow(client).to receive(:http_client).and_return(http_client)
+
+          parameter.shop_id = shop_id
+          parameter.shop_pass = shop_pass
+          parameter.access_id = access_id
+          parameter.access_pass = access_pass
+          parameter.order_id = order_id
+          parameter.ret_url = ret_url
+          parameter.first_month_free_flag = GMOPaymentCarrier::Const::SoftBank::FIRST_MONTH_FREE_FLAG_ON
+          parameter.charge_day = GMOPaymentCarrier::Const::SoftBank::CHARGE_DAY_10
+
+          result = client.call_api(parameter)
+          expect(result.access_id).to eq(access_id)
+          expect(result.token).to eq(token)
+          expect(result.start_url).to eq(start_url)
+          expect(result.start_limit_date).to eq(start_limit_date)
+          expect(result.err_code.blank?).to be true
+          expect(result.err_info.blank?).to be true
+        end
+
+        it 'return ValidationError' do
+          expect { client.call_api(parameter) }.to raise_error(GMOPaymentCarrier::ValidationError)
+        end
+      end
+
+      context "sb_continuance_cance" do
+        let(:parameter) { GMOPaymentCarrier::SoftBank::Parameter.new(GMOPaymentCarrier::Const::SoftBank::API_KIND_CANCEL) }
 
         it 'return success' do
           response = double('response')

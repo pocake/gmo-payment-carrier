@@ -19,8 +19,6 @@ module GMOPaymentCarrier
           :disp_phone_number,
           # メールアドレス
           :disp_mail_address,
-          # 支払開始期限秒
-          :payment_term_sec,
           # 終了月無料区分
           :last_month_free_flag
         ]

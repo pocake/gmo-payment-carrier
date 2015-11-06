@@ -1,6 +1,6 @@
 describe GMOPaymentCarrier::AU::Parameter do
   describe 'entry_tran_softbank_continuance' do
-    let(:target) { GMOPaymentCarrier::SoftBank::Parameter.new(GMOPaymentCarrier::Const::SoftBank::API_KIND_ENTRY) }
+    let(:target) { GMOPaymentCarrier::SoftBank::Parameter.new(GMOPaymentCarrier::SoftBank::Const::API_KIND_ENTRY) }
 
     it 'entry_tran_softbank_continuance parameter invalid' do
       target.valid?
@@ -27,7 +27,7 @@ describe GMOPaymentCarrier::AU::Parameter do
   end
 
   describe 'exec_tran_softbank_continuance' do
-    let(:target) { GMOPaymentCarrier::SoftBank::Parameter.new(GMOPaymentCarrier::Const::SoftBank::API_KIND_EXEC) }
+    let(:target) { GMOPaymentCarrier::SoftBank::Parameter.new(GMOPaymentCarrier::SoftBank::Const::API_KIND_EXEC) }
 
     it 'exec_tran_softbank_continuance parameter invalid' do
       target.valid?
@@ -49,8 +49,8 @@ describe GMOPaymentCarrier::AU::Parameter do
       target.access_pass = 'dummmy access_pass'
       target.order_id = 'dummmy order_id'
       target.ret_url = 'dummmy ret_url'
-      target.charge_day = GMOPaymentCarrier::Const::SoftBank::CHARGE_DAY_10
-      target.first_month_free_flag = GMOPaymentCarrier::Const::SoftBank::FIRST_MONTH_FREE_FLAG_ON
+      target.charge_day = GMOPaymentCarrier::SoftBank::Const::CHARGE_DAY_10
+      target.first_month_free_flag = GMOPaymentCarrier::SoftBank::Const::FIRST_MONTH_FREE_FLAG_ON
 
       target.valid?
 
@@ -66,7 +66,7 @@ describe GMOPaymentCarrier::AU::Parameter do
   end
 
   describe 'sb_continuance_cancel' do
-    let(:target) { GMOPaymentCarrier::SoftBank::Parameter.new(GMOPaymentCarrier::Const::SoftBank::API_KIND_CANCEL) }
+    let(:target) { GMOPaymentCarrier::SoftBank::Parameter.new(GMOPaymentCarrier::SoftBank::Const::API_KIND_CANCEL) }
 
     it 'sb_continuance_cance parameter invalid' do
       target.valid?

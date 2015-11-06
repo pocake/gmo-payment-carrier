@@ -1,6 +1,6 @@
 describe GMOPaymentCarrier::AU::Parameter do
   describe 'entry_tran_au_continuance' do
-    let(:target) { GMOPaymentCarrier::AU::Parameter.new(GMOPaymentCarrier::Const::AU::API_KIND_ENTRY) }
+    let(:target) { GMOPaymentCarrier::AU::Parameter.new(GMOPaymentCarrier::AU::Const::API_KIND_ENTRY) }
 
     it 'entry_tran_au_continuance parameter invalid' do
       target.valid?
@@ -30,7 +30,7 @@ describe GMOPaymentCarrier::AU::Parameter do
   end
 
   describe 'exec_tran_au_continuance' do
-    let(:target) { GMOPaymentCarrier::AU::Parameter.new(GMOPaymentCarrier::Const::AU::API_KIND_EXEC) }
+    let(:target) { GMOPaymentCarrier::AU::Parameter.new(GMOPaymentCarrier::AU::Const::API_KIND_EXEC) }
 
     it 'exec_tran_au_continuance parameter invalid' do
       target.valid?
@@ -75,7 +75,7 @@ describe GMOPaymentCarrier::AU::Parameter do
   end
 
   describe 'au_continuance_cancel' do
-    let(:target) { GMOPaymentCarrier::AU::Parameter.new(GMOPaymentCarrier::Const::AU::API_KIND_CANCEL) }
+    let(:target) { GMOPaymentCarrier::AU::Parameter.new(GMOPaymentCarrier::AU::Const::API_KIND_CANCEL) }
 
     it 'au_continuance_cancel parameter invalid' do
       target.valid?

@@ -2,11 +2,11 @@ module GMOPaymentCarrier
   class Converter
     def self.encode(api_kind:, query_string:)
       klass =
-        if Const::AU::API_KINDS.include?(api_kind)
+        if GMOPaymentCarrier::AU::Const::API_KINDS.include?(api_kind)
           GMOPaymentCarrier::AU::Parameter
-        elsif Const::Docomo::API_KINDS.include?(api_kind)
+        elsif GMOPaymentCarrier::Docomo::Const::API_KINDS.include?(api_kind)
           GMOPaymentCarrier::Docomo::Parameter
-        elsif Const::SoftBank::API_KINDS.include?(api_kind)
+        elsif GMOPaymentCarrier::SoftBank::Const::API_KINDS.include?(api_kind)
           GMOPaymentCarrier::SoftBank::Parameter
         else
           raise ArgumentError.new("api_kind invalid. api_kind: #{api_kind}")

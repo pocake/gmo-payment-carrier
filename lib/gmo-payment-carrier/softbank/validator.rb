@@ -3,11 +3,11 @@ module GMOPaymentCarrier
     class Validator < GMOPaymentCarrier::Validator
       def validate(record)
         case record.api_kind
-        when GMOPaymentCarrier::Const::SoftBank::API_KIND_ENTRY
+        when Const::API_KIND_ENTRY
           validate_entry(record)
-        when GMOPaymentCarrier::Const::SoftBank::API_KIND_EXEC
+        when Const::API_KIND_EXEC
           validate_exec(record)
-        when GMOPaymentCarrier::Const::SoftBank::API_KIND_CANCEL
+        when Const::API_KIND_CANCEL
           validate_cancel(record)
         else
           raise GMOPaymentCarrier::ValidationError.new("It is unexpected api_kind. api_kind=#{record.api_kind}")

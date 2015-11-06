@@ -1,6 +1,7 @@
 module GMOPaymentCarrier
   class Client
-    def initialize(num_of_retry: 3, safe_invalid: false)
+    def initialize(endpoint:, num_of_retry: 3, safe_invalid: false)
+      @endpoint     = endpoint
       @num_of_retry = num_of_retry
       @safe_invalid = safe_invalid
     end
@@ -37,7 +38,7 @@ module GMOPaymentCarrier
     private
 
       def http_client
-        @http_client ||= Http::Client.new(endpoint: Const::API_ENDPOINT)
+        @http_client ||= Http::Client.new(endpoint: @endpoint)
       end
 
       def api_info(kind)

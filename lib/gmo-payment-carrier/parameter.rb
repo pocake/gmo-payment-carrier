@@ -15,22 +15,22 @@ module GMOPaymentCarrier
         :shop_pass,
         # オーダーID
         :order_id,
+        # 課金利用金額
+        :amount,
+        # 課金税送料
+        :tax,
         # 取引ID
         :access_id,
         # 取引パスワード
         :access_pass,
-        # サイトID
-        :site_id,
-        # サイトパスワード
-        :site_pass,
-        # 会員作成フラグ
-        :create_member,
         # 加盟店自由項目1
         :client_field_1,
         # 加盟店自由項目2
         :client_Field_2,
         # 加盟店自由項目3
         :client_Field_3,
+        # 決済結果戻しURL
+        :ret_url,
         # 現状態
         :status,
         # 処理日時

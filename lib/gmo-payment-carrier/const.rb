@@ -1,5 +1,9 @@
 module GMOPaymentCarrier
   module Const
+    # TODO
+    PRODUCITON_API_ENDPOINT = 'https://p01.mul-pay.jp'
+    TEST_API_ENDPOINT       = 'https://pt01.mul-pay.jp'
+
     module AU
       # API種別
       API_KIND_ENTRY  = :entry_tran_au_continuance
@@ -16,8 +20,29 @@ module GMOPaymentCarrier
       ACCOUNT_TIMING_KBN_END_OF_THE_MONTH = '02' #月末
     end
 
-    # TODO
-    API_ENDPOINT = 'http://example.com'
+    module Docomo
+      # API種別
+      API_KIND_ENTRY  = :entry_tran_docomo_continuance
+      API_KIND_EXEC   = :exec_tran_docomo_continuance
+      API_KIND_CANCEL = :docomo_continuance_user_end
+
+      API_KINDS = [
+        API_KIND_ENTRY,
+        API_KIND_EXEC,
+        API_KIND_CANCEL
+      ]
+
+      # 初月無料区分
+      FIRST_MONTH_FREE_FLAG_OFF = 0 # 初月無料にしない
+      FIRST_MONTH_FREE_FLAG_ON  = 1 # 初月無料にする
+      # 確定基準日
+      CONFIRM_BASE_DATE_10        = 10
+      CONFIRM_BASE_DATE_15        = 15
+      CONFIRM_BASE_DATE_20        = 20
+      CONFIRM_BASE_DATE_25        = 25
+      CONFIRM_BASE_DATE_31        = 31
+    end
+
     API_INFOS =
       {}.tap do |h|
         h[AU::API_KIND_ENTRY] = {
@@ -30,6 +55,18 @@ module GMOPaymentCarrier
         }
         h[AU::API_KIND_CANCEL] = {
           path: '/payment/AuContinuanceCancel.idPass',
+          method: :post
+        }
+        h[Docomo::API_KIND_ENTRY] = {
+          path: '/payment/EntryTranDocomoContinuance.idPass',
+          method: :post
+        }
+        h[Docomo::API_KIND_EXEC] = {
+          path: '/payment/ExecTranDocomoContinuance.idPass',
+          method: :post
+        }
+        h[Docomo::API_KIND_CANCEL] = {
+          path: '/payment/DocomoContinuanceUserEnd.idPass',
           method: :post
         }
       end

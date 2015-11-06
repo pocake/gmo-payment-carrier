@@ -63,6 +63,27 @@ describe GMOPaymentCarrier::Client do
 
           expect { client.call_api(parameter) }.to raise_error(GMOPaymentCarrier::HTTPError)
         end
+
+        it 'return GMOSystemError' do
+          response = double('response')
+          body = "AccessID=#{access_id}&AccessPass=#{access_pass}&ErrCode=&ErrInfo="
+          allow(response).to receive(:more_than_400?).and_return(false)
+          allow(response).to receive(:body).and_return(body)
+          allow(http_client).to receive(:post).and_return(response)
+          allow(client).to receive(:http_client).and_return(http_client)
+
+          parameter.shop_id = shop_id
+          parameter.shop_pass = shop_pass
+          parameter.order_id = order_id
+          parameter.amount = 100
+          parameter.first_amount = 100
+
+          result = client.call_api(parameter)
+          expect(result.access_id).to eq(access_id)
+          expect(result.access_pass).to eq(access_pass)
+          expect(result.err_code.blank?).to be true
+          expect(result.err_info.blank?).to be true
+        end
       end
 
       context "exec_tran_au_continuanc" do
@@ -70,7 +91,7 @@ describe GMOPaymentCarrier::Client do
 
         it 'return success' do
           response = double('response')
-          body = "AccessID=#{access_id}&Token=#{token}&StartURL=#{start_url}&StartLimitDate=#{start_limit_date}&ErrCode=&ErrInfo="
+          body = "AccessID=#{access_id}&Token=#{token}&StartURL=#{start_url}&StartLimitDate=#{start_limit_date}&ErrCode=M01|M01&ErrInfo=M01001005|M01002001"
           allow(response).to receive(:more_than_400?).and_return(false)
           allow(response).to receive(:body).and_return(body)
           allow(http_client).to receive(:post).and_return(response)
@@ -89,13 +110,7 @@ describe GMOPaymentCarrier::Client do
           parameter.service_name = service_name
           parameter.service_tel = service_tel
 
-          result = client.call_api(parameter)
-          expect(result.access_id).to eq(access_id)
-          expect(result.token).to eq(token)
-          expect(result.start_url).to eq(start_url)
-          expect(result.start_limit_date).to eq(start_limit_date)
-          expect(result.err_code.blank?).to be true
-          expect(result.err_info.blank?).to be true
+          expect { client.call_api(parameter) }.to raise_error(GMOPaymentCarrier::GMOSystemError)
         end
 
         it 'return ValidationError' do

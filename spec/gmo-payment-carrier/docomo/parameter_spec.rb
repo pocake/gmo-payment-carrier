@@ -1,8 +1,8 @@
 describe GMOPaymentCarrier::AU::Parameter do
-  describe 'entry_tran_softbank_continuance' do
-    let(:target) { GMOPaymentCarrier::SoftBank::Parameter.new(GMOPaymentCarrier::Const::SoftBank::API_KIND_ENTRY) }
+  describe 'entry_tran_docomo_continuance' do
+    let(:target) { GMOPaymentCarrier::Docomo::Parameter.new(GMOPaymentCarrier::Const::Docomo::API_KIND_ENTRY) }
 
-    it 'entry_tran_softbank_continuance parameter invalid' do
+    it 'entry_tran_docomo_continuance parameter invalid' do
       target.valid?
 
       expect(target.errors[:shop_id].present?).to be true
@@ -11,7 +11,7 @@ describe GMOPaymentCarrier::AU::Parameter do
       expect(target.errors[:amount].present?).to be true
     end
 
-    it 'entry_tran_softbank_continuance parameter valid' do
+    it 'entry_tran_docomo_continuance parameter valid' do
       target.shop_id = 'dummmy shop_id'
       target.shop_pass = 'dummmy shop_pass'
       target.order_id = 'dummmy order_id'
@@ -26,8 +26,8 @@ describe GMOPaymentCarrier::AU::Parameter do
     end
   end
 
-  describe 'exec_tran_softbank_continuance' do
-    let(:target) { GMOPaymentCarrier::SoftBank::Parameter.new(GMOPaymentCarrier::Const::SoftBank::API_KIND_EXEC) }
+  describe 'exec_tran_docomo_continuance' do
+    let(:target) { GMOPaymentCarrier::Docomo::Parameter.new(GMOPaymentCarrier::Const::Docomo::API_KIND_EXEC) }
 
     it 'exec_tran_softbank_continuance parameter invalid' do
       target.valid?
@@ -38,19 +38,19 @@ describe GMOPaymentCarrier::AU::Parameter do
       expect(target.errors[:access_pass].present?).to be true
       expect(target.errors[:order_id].present?).to be true
       expect(target.errors[:ret_url].present?).to be true
-      expect(target.errors[:charge_day].present?).to be true
+      expect(target.errors[:confirm_base_date].present?).to be true
       expect(target.errors[:first_month_free_flag].present?).to be true
     end
 
-    it 'exec_tran_softbank_continuance parameter valid' do
+    it 'exec_tran_docomo_continuance parameter valid' do
       target.shop_id = 'dummmy shop_id'
       target.shop_pass = 'dummmy shop_pass'
       target.access_id = 'dummmy access_id'
       target.access_pass = 'dummmy access_pass'
       target.order_id = 'dummmy order_id'
       target.ret_url = 'dummmy ret_url'
-      target.charge_day = GMOPaymentCarrier::Const::SoftBank::CHARGE_DAY_10
-      target.first_month_free_flag = GMOPaymentCarrier::Const::SoftBank::FIRST_MONTH_FREE_FLAG_ON
+      target.confirm_base_date = GMOPaymentCarrier::Const::Docomo::CONFIRM_BASE_DATE_10
+      target.first_month_free_flag = GMOPaymentCarrier::Const::Docomo::FIRST_MONTH_FREE_FLAG_ON
 
       target.valid?
 
@@ -60,15 +60,15 @@ describe GMOPaymentCarrier::AU::Parameter do
       expect(target.errors[:access_pass].blank?).to be true
       expect(target.errors[:order_id].blank?).to be true
       expect(target.errors[:ret_url].blank?).to be true
-      expect(target.errors[:charge_day].blank?).to be true
+      expect(target.errors[:confirm_base_date].blank?).to be true
       expect(target.errors[:first_month_free_flag].blank?).to be true
     end
   end
 
-  describe 'sb_continuance_cancel' do
-    let(:target) { GMOPaymentCarrier::SoftBank::Parameter.new(GMOPaymentCarrier::Const::SoftBank::API_KIND_CANCEL) }
+  describe 'docomo_continuance_user_end' do
+    let(:target) { GMOPaymentCarrier::Docomo::Parameter.new(GMOPaymentCarrier::Const::Docomo::API_KIND_CANCEL) }
 
-    it 'sb_continuance_cance parameter invalid' do
+    it 'docomo_continuance_user_end parameter invalid' do
       target.valid?
 
       expect(target.errors[:shop_id].present?).to be true
@@ -78,7 +78,7 @@ describe GMOPaymentCarrier::AU::Parameter do
       expect(target.errors[:order_id].present?).to be true
     end
 
-    it 'sb_continuance_cance parameter valid' do
+    it 'docomo_continuance_user_end parameter valid' do
       target.shop_id = 'dummmy shop_id'
       target.shop_pass = 'dummmy shop_pass'
       target.access_id = 'dummmy access_id'

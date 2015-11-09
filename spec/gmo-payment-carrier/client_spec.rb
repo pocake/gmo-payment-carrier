@@ -1,7 +1,7 @@
 describe GMOPaymentCarrier::Client do
   describe "#call_api" do
     let(:http_client) { double('http_client') }
-    let(:client) { GMOPaymentCarrier::Client.new(endpoint: GMOPaymentCarrier::Const::TEST_API_ENDPOINT) }
+    let(:client) { GMOPaymentCarrier::Client.new }
     let(:access_id) { '123456789' }
     let(:access_pass) { FFaker::Internet.password }
     let(:token) { SecureRandom.hex }
@@ -20,7 +20,12 @@ describe GMOPaymentCarrier::Client do
 
     context "AU" do
       context "entry_tran_au_continuance" do
-        let(:parameter) { GMOPaymentCarrier::AU::Parameter.new(GMOPaymentCarrier::AU::Const::API_KIND_ENTRY) }
+        let(:parameter) do
+          GMOPaymentCarrier::AU::Parameter.new(
+            env: :test,
+            api_kind: GMOPaymentCarrier::AU::Const::API_KIND_ENTRY
+          )
+        end
 
         it 'return success' do
           response = double('response')
@@ -37,6 +42,7 @@ describe GMOPaymentCarrier::Client do
           parameter.first_amount = 100
 
           result = client.call_api(parameter)
+
           expect(result.access_id).to eq(access_id)
           expect(result.access_pass).to eq(access_pass)
           expect(result.err_code.blank?).to be true
@@ -87,7 +93,12 @@ describe GMOPaymentCarrier::Client do
       end
 
       context "exec_tran_au_continuanc" do
-        let(:parameter) { GMOPaymentCarrier::AU::Parameter.new(GMOPaymentCarrier::AU::Const::API_KIND_EXEC) }
+        let(:parameter) do
+          GMOPaymentCarrier::AU::Parameter.new(
+            env: :test,
+            api_kind: GMOPaymentCarrier::AU::Const::API_KIND_EXEC
+          )
+        end
 
         it 'return success' do
           response = double('response')
@@ -143,7 +154,12 @@ describe GMOPaymentCarrier::Client do
       end
 
       context "au_continuance_cancel" do
-        let(:parameter) { GMOPaymentCarrier::AU::Parameter.new(GMOPaymentCarrier::AU::Const::API_KIND_CANCEL) }
+        let(:parameter) do
+          GMOPaymentCarrier::AU::Parameter.new(
+            env: :test,
+            api_kind: GMOPaymentCarrier::AU::Const::API_KIND_CANCEL
+          )
+        end
 
         it 'return success' do
           response = double('response')
@@ -191,7 +207,12 @@ describe GMOPaymentCarrier::Client do
 
     context "Docomo" do
       context "entry_tran_docomo_continuance" do
-        let(:parameter) { GMOPaymentCarrier::Docomo::Parameter.new(GMOPaymentCarrier::Docomo::Const::API_KIND_ENTRY) }
+        let(:parameter) do
+           GMOPaymentCarrier::Docomo::Parameter.new(
+             env: :test,
+             api_kind: GMOPaymentCarrier::Docomo::Const::API_KIND_ENTRY
+           )
+        end
 
         it 'return success' do
           response = double('response')
@@ -219,7 +240,12 @@ describe GMOPaymentCarrier::Client do
       end
 
       context "exec_tran_docomo_continuance" do
-        let(:parameter) { GMOPaymentCarrier::Docomo::Parameter.new(GMOPaymentCarrier::Docomo::Const::API_KIND_EXEC) }
+        let(:parameter) do
+          GMOPaymentCarrier::Docomo::Parameter.new(
+            env: :env,
+            api_kind: GMOPaymentCarrier::Docomo::Const::API_KIND_EXEC
+          )
+        end
 
         it 'return success' do
           response = double('response')
@@ -253,7 +279,12 @@ describe GMOPaymentCarrier::Client do
       end
 
       context "docomo_continuance_user_end" do
-        let(:parameter) { GMOPaymentCarrier::Docomo::Parameter.new(GMOPaymentCarrier::Docomo::Const::API_KIND_CANCEL) }
+        let(:parameter) do
+          GMOPaymentCarrier::Docomo::Parameter.new(
+            env: :test,
+            api_kind: GMOPaymentCarrier::Docomo::Const::API_KIND_CANCEL
+          )
+        end
 
         it 'return success' do
           response = double('response')
@@ -284,7 +315,12 @@ describe GMOPaymentCarrier::Client do
 
     context "SoftBank" do
       context "entry_tran_sb_continuance" do
-        let(:parameter) { GMOPaymentCarrier::SoftBank::Parameter.new(GMOPaymentCarrier::SoftBank::Const::API_KIND_ENTRY) }
+        let(:parameter) do
+          GMOPaymentCarrier::SoftBank::Parameter.new(
+            env: :test,
+            api_kind: GMOPaymentCarrier::SoftBank::Const::API_KIND_ENTRY
+          )
+        end
 
         it 'return success' do
           response = double('response')
@@ -312,7 +348,12 @@ describe GMOPaymentCarrier::Client do
       end
 
       context "exec_tran_sb_continuance" do
-        let(:parameter) { GMOPaymentCarrier::SoftBank::Parameter.new(GMOPaymentCarrier::SoftBank::Const::API_KIND_EXEC) }
+        let(:parameter) do
+          GMOPaymentCarrier::SoftBank::Parameter.new(
+            env: :test,
+            api_kind: GMOPaymentCarrier::SoftBank::Const::API_KIND_EXEC
+          )
+        end
 
         it 'return success' do
           response = double('response')
@@ -346,7 +387,12 @@ describe GMOPaymentCarrier::Client do
       end
 
       context "sb_continuance_cance" do
-        let(:parameter) { GMOPaymentCarrier::SoftBank::Parameter.new(GMOPaymentCarrier::SoftBank::Const::API_KIND_CANCEL) }
+        let(:parameter) do
+          GMOPaymentCarrier::SoftBank::Parameter.new(
+            env: :test,
+            api_kind: GMOPaymentCarrier::SoftBank::Const::API_KIND_CANCEL
+          )
+        end
 
         it 'return success' do
           response = double('response')

@@ -54,8 +54,20 @@ module GMOPaymentCarrier
       raise NotImplementedError.new("Must implement #{self.class}##{__method__}")
     end
 
-    def initialize(api_kind)
+    def initialize(env: :test, api_kind: nil)
+      @env      = env.to_s
       @api_kind = api_kind
+    end
+
+    def env
+      @env.to_s.try(:inquiry)
+    end
+
+    def endpoint
+      return GMOPaymentCarrier::Const::TEST_API_ENDPOINT if env.test?
+      return GMOPaymentCarrier::Const::PRODUCITON_API_ENDPOINT if env.production?
+
+      nil
     end
 
     def exists_error?

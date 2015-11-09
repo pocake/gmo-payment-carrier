@@ -1,6 +1,10 @@
 describe GMOPaymentCarrier::AU::Parameter do
   describe 'entry_tran_docomo_continuance' do
-    let(:target) { GMOPaymentCarrier::Docomo::Parameter.new(GMOPaymentCarrier::Docomo::Const::API_KIND_ENTRY) }
+    let(:target) do
+      GMOPaymentCarrier::Docomo::Parameter.new(
+        api_kind: GMOPaymentCarrier::Docomo::Const::API_KIND_ENTRY
+      )
+    end
 
     it 'entry_tran_docomo_continuance parameter invalid' do
       target.valid?
@@ -27,7 +31,11 @@ describe GMOPaymentCarrier::AU::Parameter do
   end
 
   describe 'exec_tran_docomo_continuance' do
-    let(:target) { GMOPaymentCarrier::Docomo::Parameter.new(GMOPaymentCarrier::Docomo::Const::API_KIND_EXEC) }
+    let(:target) do
+      GMOPaymentCarrier::Docomo::Parameter.new(
+        api_kind: GMOPaymentCarrier::Docomo::Const::API_KIND_EXEC
+      )
+    end
 
     it 'exec_tran_softbank_continuance parameter invalid' do
       target.valid?
@@ -66,7 +74,11 @@ describe GMOPaymentCarrier::AU::Parameter do
   end
 
   describe 'docomo_continuance_user_end' do
-    let(:target) { GMOPaymentCarrier::Docomo::Parameter.new(GMOPaymentCarrier::Docomo::Const::API_KIND_CANCEL) }
+    let(:target) do
+      GMOPaymentCarrier::Docomo::Parameter.new(
+        api_kind: GMOPaymentCarrier::Docomo::Const::API_KIND_CANCEL
+      )
+    end
 
     it 'docomo_continuance_user_end parameter invalid' do
       target.valid?

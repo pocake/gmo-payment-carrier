@@ -1,18 +1,7 @@
 module GMOPaymentCarrier
   class Converter
-    def self.encode(api_kind:, query_string:)
-      klass =
-        if GMOPaymentCarrier::AU::Const::API_KINDS.include?(api_kind)
-          GMOPaymentCarrier::AU::Parameter
-        elsif GMOPaymentCarrier::Docomo::Const::API_KINDS.include?(api_kind)
-          GMOPaymentCarrier::Docomo::Parameter
-        elsif GMOPaymentCarrier::SoftBank::Const::API_KINDS.include?(api_kind)
-          GMOPaymentCarrier::SoftBank::Parameter
-        else
-          raise ArgumentError.new("api_kind invalid. api_kind: #{api_kind}")
-        end
-
-      klass.new(api_kind).tap do |result|
+    def self.encode(mapping_klass:, query_string:)
+      mapping_klass.new.tap do |result|
         parse_query(query_string).each do |k, v|
           result.send("#{Const::PARAM_NAMES_INVERTED[k]}=", v)
         end

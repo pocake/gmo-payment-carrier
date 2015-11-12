@@ -1,6 +1,7 @@
 module GMOPaymentCarrier
   class Client
-    def initialize(num_of_retry: 3)
+    def initialize(env: :test, num_of_retry: 3)
+      @env          = env.to_s
       @num_of_retry = num_of_retry
     end
 
@@ -11,7 +12,7 @@ module GMOPaymentCarrier
       api_response = nil
       Retriable.retriable(tries: @num_of_retry, base_interval: 1) do
         api_response =
-          http_client(parameter.endpoint).send(
+          http_client.send(
             api_info[:method],
             path: api_info[:path],
             params: decode(parameter)
@@ -26,20 +27,27 @@ module GMOPaymentCarrier
 
     private
 
-      def http_client(endpoint)
+      def http_client
         @http_client ||= Http::Client.new(endpoint: endpoint)
       end
 
+      def endpoint
+        return Const::TEST_API_ENDPOINT if @env.try(:inquiry).test?
+        return Const::PRODUCITON_API_ENDPOINT if @env.try(:inquiry).production?
+
+        raise ArgumentError.new("env unexpected. env: #{@env}. (:test|:production)")
+      end
+
       def api_info(kind)
-        GMOPaymentCarrier::Const::API_INFOS[kind]
+        Const::API_INFOS[kind]
       end
 
       def decode(parameter)
-        GMOPaymentCarrier::Converter.decode(parameter)
+        Converter.decode(parameter)
       end
 
       def encode(parameter, query_string)
-        GMOPaymentCarrier::Converter.encode(
+        Converter.encode(
           mapping_klass: parameter.class,
           query_string: query_string
         )

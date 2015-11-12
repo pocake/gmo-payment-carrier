@@ -22,7 +22,6 @@ describe GMOPaymentCarrier::Client do
       context "entry_tran_au_continuance" do
         let(:parameter) do
           GMOPaymentCarrier::AU::Parameter.new(
-            env: :test,
             api_kind: GMOPaymentCarrier::AU::Const::API_KIND_ENTRY
           )
         end
@@ -95,7 +94,6 @@ describe GMOPaymentCarrier::Client do
       context "exec_tran_au_continuanc" do
         let(:parameter) do
           GMOPaymentCarrier::AU::Parameter.new(
-            env: :test,
             api_kind: GMOPaymentCarrier::AU::Const::API_KIND_EXEC
           )
         end
@@ -156,7 +154,6 @@ describe GMOPaymentCarrier::Client do
       context "au_continuance_cancel" do
         let(:parameter) do
           GMOPaymentCarrier::AU::Parameter.new(
-            env: :test,
             api_kind: GMOPaymentCarrier::AU::Const::API_KIND_CANCEL
           )
         end
@@ -209,7 +206,6 @@ describe GMOPaymentCarrier::Client do
       context "entry_tran_docomo_continuance" do
         let(:parameter) do
            GMOPaymentCarrier::Docomo::Parameter.new(
-             env: :test,
              api_kind: GMOPaymentCarrier::Docomo::Const::API_KIND_ENTRY
            )
         end
@@ -242,7 +238,6 @@ describe GMOPaymentCarrier::Client do
       context "exec_tran_docomo_continuance" do
         let(:parameter) do
           GMOPaymentCarrier::Docomo::Parameter.new(
-            env: :env,
             api_kind: GMOPaymentCarrier::Docomo::Const::API_KIND_EXEC
           )
         end
@@ -281,7 +276,6 @@ describe GMOPaymentCarrier::Client do
       context "docomo_continuance_user_end" do
         let(:parameter) do
           GMOPaymentCarrier::Docomo::Parameter.new(
-            env: :test,
             api_kind: GMOPaymentCarrier::Docomo::Const::API_KIND_CANCEL
           )
         end
@@ -317,7 +311,6 @@ describe GMOPaymentCarrier::Client do
       context "entry_tran_sb_continuance" do
         let(:parameter) do
           GMOPaymentCarrier::SoftBank::Parameter.new(
-            env: :test,
             api_kind: GMOPaymentCarrier::SoftBank::Const::API_KIND_ENTRY
           )
         end
@@ -350,7 +343,6 @@ describe GMOPaymentCarrier::Client do
       context "exec_tran_sb_continuance" do
         let(:parameter) do
           GMOPaymentCarrier::SoftBank::Parameter.new(
-            env: :test,
             api_kind: GMOPaymentCarrier::SoftBank::Const::API_KIND_EXEC
           )
         end
@@ -389,7 +381,6 @@ describe GMOPaymentCarrier::Client do
       context "sb_continuance_cance" do
         let(:parameter) do
           GMOPaymentCarrier::SoftBank::Parameter.new(
-            env: :test,
             api_kind: GMOPaymentCarrier::SoftBank::Const::API_KIND_CANCEL
           )
         end

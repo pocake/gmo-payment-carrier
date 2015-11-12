@@ -56,6 +56,7 @@ module GMOPaymentCarrier
 
     def initialize(api_kind: nil)
       @api_kind = api_kind
+      yield(self) if block_given?
     end
 
     def exists_error?

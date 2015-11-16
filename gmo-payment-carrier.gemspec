@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["pocake"]
   spec.email         = ["info@pieceofcake.co.jp"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{ gmo-payment-carrier. }
+  spec.description   = %q{ gmo-payment-carrier. }
+  spec.homepage      = "https://github.com/pocake/gmo-payment-carrier"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or

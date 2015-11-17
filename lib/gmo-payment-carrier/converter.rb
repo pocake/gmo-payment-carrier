@@ -8,6 +8,14 @@ module GMOPaymentCarrier
       end
     end
 
+    def self.encode_for_params(params)
+      Hashie::Mash.new.tap do |result|
+        params.each do |k, v|
+          result.send("#{Const::PARAM_NAMES_INVERTED[k]}=", v)
+        end
+      end
+    end
+
     def self.decode(parameter)
       {}.tap do |result|
         parameter.class.attribute_names.each do |attribute_name|

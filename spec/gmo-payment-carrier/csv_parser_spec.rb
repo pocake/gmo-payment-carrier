@@ -7,6 +7,7 @@ describe GMOPaymentCarrier::CsvParser do
 
       it 'success parce' do
         GMOPaymentCarrier::CsvParser.parse(filepath) do |csv|
+          expect(csv.au?).to be true
           expect(csv.shop_id.present?).to be true
           expect(csv.order_id.present?).to be true
           expect(csv.billing_confirmed_date.present?).to be true
@@ -28,6 +29,7 @@ describe GMOPaymentCarrier::CsvParser do
 
       it 'success parce' do
         GMOPaymentCarrier::CsvParser.parse(filepath) do |csv|
+          expect(csv.docomo?).to be true
           expect(csv.shop_id.present?).to be true
           expect(csv.order_id.present?).to be true
           expect(csv.status.present?).to be true
@@ -62,6 +64,7 @@ describe GMOPaymentCarrier::CsvParser do
 
       it 'success parce' do
         GMOPaymentCarrier::CsvParser.parse(filepath) do |csv|
+          expect(csv.softbank?).to be true
           expect(csv.shop_id.present?).to be true
           expect(csv.order_id.present?).to be true
         end

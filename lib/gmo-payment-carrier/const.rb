@@ -85,7 +85,7 @@ module GMOPaymentCarrier
       confirm_base_date:      'ConfirmBaseDate',
       disp_shop_name:         'DispShopName',
       disp_phone_number:      'DispPhoneNumber',
-      DispMailAddress:        'disp_mail_address',
+      disp_mail_address:      'DispMailAddress',
       docomo_settlement_code: 'DocomoSettlementCode',
       charge_day:             'ChargeDay',
       sb_tracking_id:         'SbTrackingId',

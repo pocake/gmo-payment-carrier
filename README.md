@@ -462,26 +462,36 @@ end
 
 **Docomo**
 
-| パラメータ名                      | 和名                 | 必須 |
-|:----------------------------------|:---------------------|:-----|
-| shop_id                           | ショップID           | ○    |
-| order_id                          | オーダID             | ○    |
-| billing_date                      | 課金月               | ○    |
-| status                            | 取引状態             | ○    |
-| amount                            | 利用金額             | ○    |
-| tax                               | 税送料               | ○    |
-| cancel_amount                     | キャンセル金額       | ×    |
-| cancel_tax                        | キャンセル税送料     | ×    |
-| tran_id                           | 取引ID               | ○    |
-| tran_pass                         | 取引パスワート       | ○    |
-| docomo_payment_information_number | ドコモ決済番号       | ○    |
-| docomo_merchant_order_number      | ドコモ加盟店注文番号 | ○    |
-| tran_expired_at                   | 処理期限             | ○    |
-| err_code                          | エラーコート         | ×    |
-| err_info                          | エラー詳細コート     | ×    |
-| tran_date                         | 処理日時             | ○    |
+| パラメータ名                 | 和名                 | 必須 |
+|:-----------------------------|:---------------------|:-----|
+| shop_id                      | ショップID           | ○    |
+| order_id                     | オーダID             | ○    |
+| status                       | 取引状態             | ○    |
+| amount                       | 利用金額             | ○    |
+| tax                          | 税送料               | ○    |
+| change_amount                | 変更利用金額         | ×    |
+| change_tax                   | 変更税送料           | ×    |
+| docomo_disp_1                | ドコモ表示項目1      | ×    |
+| docomo_disp_2                | ドコモ表示項目2      | ×    |
+| docomo_settlement_code       | ドコモ決済番号       | ○    |
+| client_field_1               | 加盟店自由項目1      | ×    |
+| client_field_2               | 加盟店自由項目2      | ×    |
+| client_field_3               | 加盟店自由項目3      | ×    |
+| tran_id                      | 取引ID               | ○    |
+| tran_pass                    | 取引パスワード       | ○    |
+| tran_id                      | 取引ID               | ○    |
+| docomo_merchant_order_number | ドコモ加盟店注文番号 | ○    |
+| docomo_terminal_segment      | ドコモ端末区分       | ○    |
+| wifi_tethering_connection    | Wi-fiテザリング接続  | ○    |
+| confirm_base_date            | 確定基準日           | ○    |
+| first_month_free_flag        | 初月無料フラグ       | ○    |
+| end_month_free_flag          | 終了月無料フラグ     | ×    |
+| continue_billing_end_date    | 継続課金終了日       | ×    |
+| err_code                     | エラーコード         | ×    |
+| err_info                     | エラー詳細コード     | ×    |
+| tran_date                    | 処理日時             | ○    |
 
-※詳細は最新版の「プロトコルタイプ(マルチ決済インターフェース仕様) 12.6.2. 日次課金ファイルを送信する流れ」を参照のこと
+※詳細は最新版の「プロトコルタイプ(マルチ決済インターフェース仕様) 12.7.2. 申込状況ファイルを送信する流れ」を参照のこと
 
 **SoftBank**
 

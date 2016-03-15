@@ -33,25 +33,17 @@ TODO
 
 また、以下のユーティリティな部品を用意してます
 - [各キャリアの課金結果ファイル(CSV)パーサー](#各キャリアの課金結果ファイルCSVパーサー)
-- RSpec Stub(準備中)
-  - auかんたん決済継続課金#取引登録#正常
-  - auかんたん決済継続課金#取引登録#異常
-  - auかんたん決済継続課金#決済実行#正常
-  - auかんたん決済継続課金#決済実行#異常
-  - auかんたん決済継続課金#継続課金解約#正常
-  - auかんたん決済継続課金#継続課金解約#異常
-  - ドコモ継続課金サービス決済#継続課金解約#正常
-  - ドコモ継続課金サービス決済#継続課金解約#異常
-  - ドコモ継続課金サービス決済#決済実行#正常
-  - ドコモ継続課金サービス決済#決済実行#異常
-  - ドコモ継続課金サービス決済#継続課金終了(利用者)#正常
-  - ドコモ継続課金サービス決済#継続課金終了(利用者)#異常
-  - ソフトバンクまとめて支払い(B)継続課金決済#取引登録#正常
-  - ソフトバンクまとめて支払い(B)継続課金決済#取引登録#異常
-  - ソフトバンクまとめて支払い(B)継続課金決済#決済実行#正常
-  - ソフトバンクまとめて支払い(B)継続課金決済#決済実行#異常
-  - ソフトバンクまとめて支払い(B)継続課金決済#継続課金解約#正常
-  - ソフトバンクまとめて支払い(B)継続課金決済#継続課金解約#異常
+- RSpec Stub
+  - [auかんたん決済継続課金#取引登録#正常](#auかんたん決済継続課金取引登録正常)
+  - [auかんたん決済継続課金#決済実行#正常](#auかんたん決済継続課金決済実行正常)
+  - [auかんたん決済継続課金#継続課金解約#正常](#auかんたん決済継続課金継続課金解約正常)
+  - [ドコモ継続課金サービス決済#継続課金解約#正常](#ドコモ継続課金サービス決済継続課金解約正常)
+  - [ドコモ継続課金サービス決済#決済実行#正常](#ドコモ継続課金サービス決済決済実行正常)
+  - [ドコモ継続課金サービス決済#継続課金終了(利用者)#正常](#ドコモ継続課金サービス決済継続課金終了利用者正常)
+  - [ソフトバンクまとめて支払い(B)継続課金決済#取引登録#正常](#ソフトバンクまとめて支払いB継続課金決済取引登録正常)
+  - [ソフトバンクまとめて支払い(B)継続課金決済#決済実行#正常](#ソフトバンクまとめて支払いB継続課金決済決済実行正常)
+  - [ソフトバンクまとめて支払い(B)継続課金決済#継続課金解約#正常](#ソフトバンクまとめて支払いB継続課金決済継続課金解約正常)
+  - [キャリア決済継続課金共通#異常](#キャリア決済継続課金共通異常)
 
 ## Usage
 
@@ -516,5 +508,155 @@ end
 rows = []
 GMOPaymentCarrier::CsvParser.parse(filepath) do |row|
   rows << row
+end
+```
+
+### RSpecHelper
+
+##### 設定
+
+```
+RSpec.configure do |config|
+  config.include GMOPaymentCarrier::RSpecHelper
+end
+```
+
+##### auかんたん決済継続課金#取引登録#正常
+
+```ruby
+describe 'hen au entry normality' do
+  before do
+    set_au_entry_normality_stub
+  end
+
+  it "should success" do
+    GMOPaymentCarrier::Client.new.call_api(nil)
+  end
+end
+```
+
+##### auかんたん決済継続課金#決済実行#正常
+
+```ruby
+describe 'when au exec normality' do
+  before do
+    set_au_exec_normality_stub
+  end
+
+  it "should success" do
+    GMOPaymentCarrier::Client.new.call_api(nil)
+  end
+end
+```
+
+##### auかんたん決済継続課金#継続課金解約#正常
+
+```ruby
+describe 'when au cencel normality' do
+  before do
+    set_au_cancel_normality_stub
+  end
+
+  it "should success" do
+    GMOPaymentCarrier::Client.new.call_api(nil)
+  end
+end
+```
+
+##### ドコモ継続課金サービス決済#継続課金解約#正常
+
+```ruby
+describe 'when docomo entry normality' do
+  before do
+    set_docomo_entry_normality_stub
+  end
+
+  it "should success" do
+    GMOPaymentCarrier::Client.new.call_api(nil)
+  end
+end
+```
+
+##### ドコモ継続課金サービス決済#決済実行#正常
+
+```ruby
+describe 'when docomo exec normality' do
+  before do
+    set_docomo_exec_normality_stub
+  end
+
+  it "should success" do
+    GMOPaymentCarrier::Client.new.call_api(nil)
+  end
+end
+```
+
+##### ドコモ継続課金サービス決済#継続課金終了(利用者)#正常
+
+```ruby
+describe 'when docomo cancel normality' do
+  before do
+    set_docomo_cancel_normality_stub
+  end
+
+  it "should success" do
+    GMOPaymentCarrier::Client.new.call_api(nil)
+  end
+end
+```
+
+##### ソフトバンクまとめて支払い(B)継続課金決済#取引登録#正常
+
+```ruby
+describe 'when softbank entry normality' do
+  before do
+    set_sb_entry_normality_stub
+  end
+
+  it "should success" do
+    GMOPaymentCarrier::Client.new.call_api(nil)
+  end
+end
+```
+
+##### ソフトバンクまとめて支払い(B)継続課金決済#決済実行#正常
+
+```ruby
+describe 'when softbank exec normality' do
+  before do
+    set_sb_exec_normality_stub
+  end
+
+  it "should success" do
+    GMOPaymentCarrier::Client.new.call_api(nil)
+  end
+end
+```
+
+##### ソフトバンクまとめて支払い(B)継続課金決済#継続課金解約#正常
+
+```ruby
+describe 'when softbank cencel normality' do
+  before do
+    set_sb_cencel_normality_stub
+  end
+
+  it "should success" do
+    GMOPaymentCarrier::Client.new.call_api(nil)
+  end
+end
+```
+
+##### キャリア決済継続課金共通#異常
+
+```ruby
+describe 'when softbank cencel normality' do
+  before do
+    set_gmo_raise_error_stub
+  end
+
+  it "should fail" do
+    GMOPaymentCarrier::Client.new.call_api(nil)
+  end
 end
 ```

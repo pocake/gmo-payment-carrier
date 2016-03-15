@@ -16,8 +16,8 @@ module GMOPaymentCarrier
       set_call_api_stub(result)
     end
 
-    # # auかんたん決済継続課金#決済実行#正常
-    def set_au_exec_normality_stub(status: 'REGISTER')
+    # auかんたん決済継続課金#決済実行#正常
+    def set_au_exec_normality_stub
       result = GMOPaymentCarrier::AU::Parameter.new
       result.access_id = '123456789'
       result.token = SecureRandom.hex(64)

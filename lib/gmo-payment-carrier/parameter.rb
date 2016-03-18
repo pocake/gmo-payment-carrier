@@ -54,6 +54,19 @@ module GMOPaymentCarrier
       raise NotImplementedError.new("Must implement #{self.class}##{__method__}")
     end
 
+    def self.factory(api_kind, params)
+      obj =
+        if AU::API_KINDS.include?(api_kind)
+          GMOPaymentCarrier::AU::Parameter.new(api_kind: api_kind)
+        elsif Docomo::API_KINDS.include?(api_kind)
+          GMOPaymentCarrier::Docomo::Parameter.new(api_kind: api_kind)
+        else
+          GMOPaymentCarrier::SoftBank::Parameter.new(api_kind: api_kind)
+        end
+      params.each { |k, v| obj.send("=#{k}", v) }
+      obj
+    end
+
     def initialize(api_kind: nil)
       @api_kind = api_kind
       yield(self) if block_given?

@@ -51,10 +51,10 @@ TODO
 
 ```ruby
 # for test
-client = GMOPaymentCarrier::Clinet.new(GMOPaymentCarrier::Const::TEST_API_ENDPOINT)
+client = GMOPaymentCarrier::Client.new(GMOPaymentCarrier::Const::TEST_API_ENDPOINT)
 
 # for production
-client = GMOPaymentCarrier::Clinet.new(GMOPaymentCarrier::Const::PRODUCITON_API_ENDPOINT)
+client = GMOPaymentCarrier::Client.new(GMOPaymentCarrier::Const::PRODUCITON_API_ENDPOINT)
 ```
 
 ### auかんたん決済継続課金#取引登録

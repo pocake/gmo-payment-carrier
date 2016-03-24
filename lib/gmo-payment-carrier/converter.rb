@@ -31,7 +31,7 @@ module GMOPaymentCarrier
     end
 
     def self.parse_query(query_string)
-      URI::decode_www_form(query_string).to_h.with_indifferent_access
+      query_string.split('&').map{ |str| str.split('=') }.to_h.with_indifferent_access
     end
     private_class_method :parse_query
   end

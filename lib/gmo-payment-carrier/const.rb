@@ -102,7 +102,14 @@ module GMOPaymentCarrier
       charge_day:             'ChargeDay',
       sb_tracking_id:         'SbTrackingId',
       start_charge_month:     'StartChargeMonth',
-      pay_type:               'PayType'
+      pay_type:               'PayType',
+      au_continuance_err_code: 'AuContinuanceErrCode',
+      au_continuance_err_info: 'AuContinuanceErrInfo',
+      au_continue_account_id:  'AuContinueAccountId',
+      docomo_cancel_amount:    'DocomoCancelAmount',
+      docomo_cancel_tax:       'DocomoCancelTax',
+      payment_term:            'PaymentTerm',
+      sb_start_charge_month:   'SbStartChargeMonth'
     }.with_indifferent_access
     PARAM_NAMES_INVERTED = PARAM_NAMES.invert
 

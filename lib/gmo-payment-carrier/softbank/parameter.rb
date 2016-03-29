@@ -13,6 +13,11 @@ module GMOPaymentCarrier
       end
 
       attr_accessor(*attribute_names)
+
+      # 支払い区分
+      def pay_type
+        Const::PAY_TYPE
+      end
     end
   end
 end

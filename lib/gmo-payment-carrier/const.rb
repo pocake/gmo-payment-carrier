@@ -17,6 +17,10 @@ module GMOPaymentCarrier
           path: '/payment/AuContinuanceCancel.idPass',
           method: :post
         }
+        h[GMOPaymentCarrier::AU::Const::API_KIND_SEARCH] = {
+          path: '/payment/SearchTradeMulti.idPass',
+          method: :post
+        }
         h[GMOPaymentCarrier::Docomo::Const::API_KIND_ENTRY] = {
           path: '/payment/EntryTranDocomoContinuance.idPass',
           method: :post
@@ -29,6 +33,10 @@ module GMOPaymentCarrier
           path: '/payment/DocomoContinuanceUserEnd.idPass',
           method: :post
         }
+        h[GMOPaymentCarrier::Docomo::Const::API_KIND_SEARCH] = {
+          path: '/payment/SearchTradeMulti.idPass',
+          method: :post
+        }
         h[GMOPaymentCarrier::SoftBank::Const::API_KIND_ENTRY] = {
           path: '/payment/EntryTranSbContinuance.idPass',
           method: :post
@@ -39,6 +47,10 @@ module GMOPaymentCarrier
         }
         h[GMOPaymentCarrier::SoftBank::Const::API_KIND_CANCEL] = {
           path: '/payment/SbContinuanceCancel.idPass',
+          method: :post
+        }
+        h[GMOPaymentCarrier::SoftBank::Const::API_KIND_SEARCH] = {
+          path: '/payment/SearchTradeMulti.idPass',
           method: :post
         }
       end
@@ -89,7 +101,8 @@ module GMOPaymentCarrier
       docomo_settlement_code: 'DocomoSettlementCode',
       charge_day:             'ChargeDay',
       sb_tracking_id:         'SbTrackingId',
-      start_charge_month:     'StartChargeMonth'
+      start_charge_month:     'StartChargeMonth',
+      pay_type:               'PayType'
     }.with_indifferent_access
     PARAM_NAMES_INVERTED = PARAM_NAMES.invert
 

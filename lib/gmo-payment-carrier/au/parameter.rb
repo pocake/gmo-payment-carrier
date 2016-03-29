@@ -41,6 +41,10 @@ module GMOPaymentCarrier
       def first_account_date
         @first_account_date.try(:strftime, '%Y%m%d')
       end
+
+      def pay_type
+        Const::PAY_TYPE
+      end
     end
   end
 end

@@ -28,7 +28,7 @@ describe GMOPaymentCarrier::Client do
 
         it 'return success' do
           response = double('response')
-          body = "AccessID=#{access_id}&AccessPass=#{access_pass}&ErrCode=&ErrInfo="
+          body = "AccessID=#{access_id}&AccessPass=#{access_pass}"
           allow(response).to receive(:more_than_400?).and_return(false)
           allow(response).to receive(:body).and_return(body)
           allow(http_client).to receive(:post).and_return(response)
@@ -71,7 +71,7 @@ describe GMOPaymentCarrier::Client do
 
         it 'return GMOSystemError' do
           response = double('response')
-          body = "AccessID=#{access_id}&AccessPass=#{access_pass}&ErrCode=&ErrInfo="
+          body = "AccessID=#{access_id}&AccessPass=#{access_pass}"
           allow(response).to receive(:more_than_400?).and_return(false)
           allow(response).to receive(:body).and_return(body)
           allow(http_client).to receive(:post).and_return(response)
@@ -160,7 +160,7 @@ describe GMOPaymentCarrier::Client do
 
         it 'return success' do
           response = double('response')
-          body = "OrderID=#{order_id}&Status=#{status}&ErrCode=&ErrInfo="
+          body = "OrderID=#{order_id}&Status=#{status}"
           allow(response).to receive(:more_than_400?).and_return(false)
           allow(response).to receive(:body).and_return(body)
           allow(http_client).to receive(:post).and_return(response)
@@ -200,6 +200,38 @@ describe GMOPaymentCarrier::Client do
           expect { client.call_api(parameter) }.to raise_error(GMOPaymentCarrier::HTTPError)
         end
       end
+
+      context "au_search" do
+        let(:parameter) do
+          GMOPaymentCarrier::AU::Parameter.new(
+            api_kind: GMOPaymentCarrier::AU::Const::API_KIND_SEARCH
+          )
+        end
+
+        it 'return success' do
+          response = double('response')
+          body = "Status=REGISTER"
+          allow(response).to receive(:more_than_400?).and_return(false)
+          allow(response).to receive(:body).and_return(body)
+          allow(http_client).to receive(:post).and_return(response)
+          allow(client).to receive(:http_client).and_return(http_client)
+
+          parameter.shop_id = shop_id
+          parameter.shop_pass = shop_pass
+          parameter.access_id = access_id
+          parameter.access_pass = access_pass
+          parameter.order_id = order_id
+
+          result = client.call_api(parameter)
+          expect(result.status).to eq('REGISTER')
+          expect(result.err_code.blank?).to be true
+          expect(result.err_info.blank?).to be true
+        end
+
+        it 'return ValidationError' do
+          expect { client.call_api(parameter) }.to raise_error(GMOPaymentCarrier::ValidationError)
+        end
+      end
     end
 
     context "Docomo" do
@@ -212,7 +244,7 @@ describe GMOPaymentCarrier::Client do
 
         it 'return success' do
           response = double('response')
-          body = "AccessID=#{access_id}&AccessPass=#{access_pass}&ErrCode=&ErrInfo="
+          body = "AccessID=#{access_id}&AccessPass=#{access_pass}"
           allow(response).to receive(:more_than_400?).and_return(false)
           allow(response).to receive(:body).and_return(body)
           allow(http_client).to receive(:post).and_return(response)
@@ -244,7 +276,7 @@ describe GMOPaymentCarrier::Client do
 
         it 'return success' do
           response = double('response')
-          body = "AccessID=#{access_id}&Token=#{token}&StartURL=#{start_url}&StartLimitDate=#{start_limit_date}&ErrCode=&ErrInfo="
+          body = "AccessID=#{access_id}&Token=#{token}&StartURL=#{start_url}&StartLimitDate=#{start_limit_date}"
           allow(response).to receive(:more_than_400?).and_return(false)
           allow(response).to receive(:body).and_return(body)
           allow(http_client).to receive(:post).and_return(response)
@@ -282,7 +314,7 @@ describe GMOPaymentCarrier::Client do
 
         it 'return success' do
           response = double('response')
-          body = "OrderID=#{order_id}&Status=#{status}&ErrCode=&ErrInfo="
+          body = "OrderID=#{order_id}&Status=#{status}"
           allow(response).to receive(:more_than_400?).and_return(false)
           allow(response).to receive(:body).and_return(body)
           allow(http_client).to receive(:post).and_return(response)
@@ -305,6 +337,38 @@ describe GMOPaymentCarrier::Client do
           expect { client.call_api(parameter) }.to raise_error(GMOPaymentCarrier::ValidationError)
         end
       end
+
+      context "docomo_search" do
+        let(:parameter) do
+          GMOPaymentCarrier::Docomo::Parameter.new(
+            api_kind: GMOPaymentCarrier::Docomo::Const::API_KIND_SEARCH
+          )
+        end
+
+        it 'return success' do
+          response = double('response')
+          body = "Status=REGISTER"
+          allow(response).to receive(:more_than_400?).and_return(false)
+          allow(response).to receive(:body).and_return(body)
+          allow(http_client).to receive(:post).and_return(response)
+          allow(client).to receive(:http_client).and_return(http_client)
+
+          parameter.shop_id = shop_id
+          parameter.shop_pass = shop_pass
+          parameter.access_id = access_id
+          parameter.access_pass = access_pass
+          parameter.order_id = order_id
+
+          result = client.call_api(parameter)
+          expect(result.status).to eq('REGISTER')
+          expect(result.err_code.blank?).to be true
+          expect(result.err_info.blank?).to be true
+        end
+
+        it 'return ValidationError' do
+          expect { client.call_api(parameter) }.to raise_error(GMOPaymentCarrier::ValidationError)
+        end
+      end
     end
 
     context "SoftBank" do
@@ -317,7 +381,7 @@ describe GMOPaymentCarrier::Client do
 
         it 'return success' do
           response = double('response')
-          body = "AccessID=#{access_id}&AccessPass=#{access_pass}&ErrCode=&ErrInfo="
+          body = "AccessID=#{access_id}&AccessPass=#{access_pass}"
           allow(response).to receive(:more_than_400?).and_return(false)
           allow(response).to receive(:body).and_return(body)
           allow(http_client).to receive(:post).and_return(response)
@@ -349,7 +413,7 @@ describe GMOPaymentCarrier::Client do
 
         it 'return success' do
           response = double('response')
-          body = "AccessID=#{access_id}&Token=#{token}&StartURL=#{start_url}&StartLimitDate=#{start_limit_date}&ErrCode=&ErrInfo="
+          body = "AccessID=#{access_id}&Token=#{token}&StartURL=#{start_url}&StartLimitDate=#{start_limit_date}"
           allow(response).to receive(:more_than_400?).and_return(false)
           allow(response).to receive(:body).and_return(body)
           allow(http_client).to receive(:post).and_return(response)
@@ -378,7 +442,7 @@ describe GMOPaymentCarrier::Client do
         end
       end
 
-      context "sb_continuance_cance" do
+      context "sb_continuance_cancel" do
         let(:parameter) do
           GMOPaymentCarrier::SoftBank::Parameter.new(
             api_kind: GMOPaymentCarrier::SoftBank::Const::API_KIND_CANCEL
@@ -387,7 +451,7 @@ describe GMOPaymentCarrier::Client do
 
         it 'return success' do
           response = double('response')
-          body = "OrderID=#{order_id}&Status=#{status}&ErrCode=&ErrInfo="
+          body = "OrderID=#{order_id}&Status=#{status}"
           allow(response).to receive(:more_than_400?).and_return(false)
           allow(response).to receive(:body).and_return(body)
           allow(http_client).to receive(:post).and_return(response)
@@ -402,6 +466,38 @@ describe GMOPaymentCarrier::Client do
           result = client.call_api(parameter)
           expect(result.order_id).to eq(order_id)
           expect(result.status).to eq(status)
+          expect(result.err_code.blank?).to be true
+          expect(result.err_info.blank?).to be true
+        end
+
+        it 'return ValidationError' do
+          expect { client.call_api(parameter) }.to raise_error(GMOPaymentCarrier::ValidationError)
+        end
+      end
+
+      context "sb_search" do
+        let(:parameter) do
+          GMOPaymentCarrier::SoftBank::Parameter.new(
+            api_kind: GMOPaymentCarrier::SoftBank::Const::API_KIND_SEARCH
+          )
+        end
+
+        it 'return success' do
+          response = double('response')
+          body = "Status=REGISTER"
+          allow(response).to receive(:more_than_400?).and_return(false)
+          allow(response).to receive(:body).and_return(body)
+          allow(http_client).to receive(:post).and_return(response)
+          allow(client).to receive(:http_client).and_return(http_client)
+
+          parameter.shop_id = shop_id
+          parameter.shop_pass = shop_pass
+          parameter.access_id = access_id
+          parameter.access_pass = access_pass
+          parameter.order_id = order_id
+
+          result = client.call_api(parameter)
+          expect(result.status).to eq('REGISTER')
           expect(result.err_code.blank?).to be true
           expect(result.err_info.blank?).to be true
         end

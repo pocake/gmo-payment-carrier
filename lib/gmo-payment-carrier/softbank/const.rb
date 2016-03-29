@@ -5,11 +5,13 @@ module GMOPaymentCarrier
       API_KIND_ENTRY  = :entry_tran_sb_continuance
       API_KIND_EXEC   = :exec_tran_sb_continuance
       API_KIND_CANCEL = :sb_continuance_cancel
+      API_KIND_SEARCH = :sb_search
 
       API_KINDS = [
         API_KIND_ENTRY,
         API_KIND_EXEC,
-        API_KIND_CANCEL
+        API_KIND_CANCEL,
+        API_KIND_SEARCH
       ]
 
       # 初月無料区分
@@ -21,6 +23,8 @@ module GMOPaymentCarrier
       CHARGE_DAY_20             = 20
       CHARGE_DAY_25             = 25
       CHARGE_DAY_31             = 31
+
+      PAY_TYPE = 22
     end
   end
 end

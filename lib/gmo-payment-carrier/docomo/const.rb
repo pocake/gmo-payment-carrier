@@ -5,11 +5,13 @@ module GMOPaymentCarrier
       API_KIND_ENTRY  = :entry_tran_docomo_continuance
       API_KIND_EXEC   = :exec_tran_docomo_continuance
       API_KIND_CANCEL = :docomo_continuance_user_end
+      API_KIND_SEARCH = :docomo_search
 
       API_KINDS = [
         API_KIND_ENTRY,
         API_KIND_EXEC,
-        API_KIND_CANCEL
+        API_KIND_CANCEL,
+        API_KIND_SEARCH
       ]
 
       # 初月無料区分
@@ -21,6 +23,9 @@ module GMOPaymentCarrier
       CONFIRM_BASE_DATE_20      = 20
       CONFIRM_BASE_DATE_25      = 25
       CONFIRM_BASE_DATE_31      = 31
+
+      # 支払い区分
+      PAY_TYPE = 10
     end
   end
 end

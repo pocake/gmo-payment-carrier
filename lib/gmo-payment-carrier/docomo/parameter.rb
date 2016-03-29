@@ -25,6 +25,10 @@ module GMOPaymentCarrier
       end
 
       attr_accessor(*(attribute_names + extension_attribute_names))
+
+      def pay_type
+        Const::PAY_TYPE
+      end
     end
   end
 end

@@ -22,14 +22,17 @@ TODO
   - [取引登録 (/payment/EntryTranAuContinuance.idPass)](#auかんたん決済継続課金取引登録)
   - [決済実行 (/payment/EntryTranAuContinuance.idPass)](#auかんたん決済継続課金決済実行)
   - [継続課金解約 (/payment/AuContinuanceCancel.idPass)](#auかんたん決済継続課金継続課金解約)
+  - [取引状態参照 (/payment/SearchTradeMulti.idPass)](#auかんたん決済継続課金取引状態参照)
 - ドコモ継続課金サービス決済
   - [取引登録 (/payment/EntryTranDocomoContinuance.idPass)](#ドコモ継続課金サービス決済取引登録)
   - [決済実行 (/payment/ExecTranDocomoContinuance.idPass)](#ドコモ継続課金サービス決済決済実行)
   - [継続課金終了(利用者) (/payment/DocomoContinuanceUserEnd.idPass)](#ドコモ継続課金サービス決済継続課金終了利用者)
+  - [取引状態参照 (/payment/SearchTradeMulti.idPass)](#ドコモ継続課金サービス取引状態参照)
 - ソフトバンクまとめて支払い(B)継続課金決済
   - [取引登録 (/payment/EntryTranSbContinuance.idPass)](#ソフトバンクまとめて支払いB継続課金決済取引登録)
   - [決済実行 (/payment/ExecTranSbContinuance.idPass)](#ソフトバンクまとめて支払いB継続課金決済決済実行)
   - [継続課金解約 (/payment/SbContinuanceCancel.idPass)](#ソフトバンクまとめて支払いB継続課金決済継続課金解)
+  - [取引状態参照 (/payment/SearchTradeMulti.idPass)](#ソフトバンクまとめて支払いB継続課金取引状態参照)
 
 また、以下のユーティリティな部品を用意してます
 - [各キャリアの課金結果ファイル(CSV)パーサー](#各キャリアの課金結果ファイルCSVパーサー)
@@ -51,10 +54,10 @@ TODO
 
 ```ruby
 # for test
-client = GMOPaymentCarrier::Client.new(GMOPaymentCarrier::Const::TEST_API_ENDPOINT)
+client = GMOPaymentCarrier::Client.new(env: :test)
 
 # for production
-client = GMOPaymentCarrier::Client.new(GMOPaymentCarrier::Const::PRODUCITON_API_ENDPOINT)
+client = GMOPaymentCarrier::Client.new(env :production)
 ```
 
 ### auかんたん決済継続課金#取引登録
@@ -174,6 +177,64 @@ status
 
 ```ruby
 param = GMOPaymentCarrier::AU::Parameter.new(api_kind: GMOPaymentCarrier::AU::Const::API_KIND_CANCEL)
+param.shop_id = 'dummmy shop_id'
+param.shop_pass = 'dummmy shop_pass'
+param.access_id = 'dummmy access_id'
+param.access_pass = 'dummmy access_pass'
+param.order_id = 'dummmy order_id'
+
+if param.valid?
+  client.call_api(param)
+else
+  # エラー処理
+end
+```
+
+### auかんたん決済継続課金#取引状態参照
+
+##### Input
+| パラメータ名 | 必須 |
+|:-------------|:-----|
+| shop_id      | ○    |
+| shop_pass    | ○    |
+| access_id    | ○    |
+| access_pass  | ○    |
+| order_id     | ○    |
+
+
+##### Output
+- - status
+- - process_date
+- - job_cd
+- - access_id
+- - access_pass
+- - amount
+- - tax
+- - currency
+- - site_id
+- - member_id
+- - client_field_1
+- - client_field_2
+- - client_field_3
+- - pay_type
+- - au_pay_method
+- - account_timing_kbn
+- - account_timing
+- - first_account_date
+- - first_amount
+- - first_tax
+- - au_continuance_err_code
+- - au_continuance_err_info
+- - au_continue_account_id
+- - err_code
+- - err_info
+
+※詳細は最新版の「プロトコルタイプ(マルチ決済インターフェース仕様) 決済結果を参照する」を参照のこと
+
+##### Example
+
+```ruby
+param = GMOPaymentCarrier::AU::Parameter.new(api_kind: GMOPaymentCarrier::AU::Const::API_KIND_SEARCH)
 param.shop_id = 'dummmy shop_id'
 param.shop_pass = 'dummmy shop_pass'
 param.access_id = 'dummmy access_id'
@@ -315,6 +376,58 @@ else
 end
 ```
 
+### auかんたん決済継続課金#取引状態参照
+
+##### Input
+| パラメータ名 | 必須 |
+|:-------------|:-----|
+| shop_id      | ○    |
+| shop_pass    | ○    |
+| access_id    | ○    |
+| access_pass  | ○    |
+| order_id     | ○    |
+
+
+##### Output
+- status
+- process_date
+- job_cd
+- access_id
+- access_pass
+- amount
+- tax
+- currency
+- site_id
+- member_id
+- client_field_1
+- client_field_2
+- client_field_3
+- pay_type
+- err_code
+- err_info
+- docomo_settlement_code
+- docomo_cancel_amount
+- docomo_cancel_tax
+
+※詳細は最新版の「プロトコルタイプ(マルチ決済インターフェース仕様) 決済結果を参照する」を参照のこと
+
+##### Example
+
+```ruby
+param = GMOPaymentCarrier::Docomo::Parameter.new(api_kind: GMOPaymentCarrier::Docomo::Const::API_KIND_SEARCH)
+param.shop_id = 'dummmy shop_id'
+param.shop_pass = 'dummmy shop_pass'
+param.access_id = 'dummmy access_id'
+param.access_pass = 'dummmy access_pass'
+param.order_id = 'dummmy order_id'
+
+if param.valid?
+  client.call_api(param)
+else
+  # エラー処理
+end
+```
+
 ### ソフトバンクまとめて支払い(B)継続課金決済#取引登録
 
 ##### Input
@@ -414,6 +527,58 @@ end
 
 ```ruby
 param = GMOPaymentCarrier::SoftBank::Parameter.new(api_kind: GMOPaymentCarrier::SoftBank::Const::API_KIND_CANCEL)
+param.shop_id = 'dummmy shop_id'
+param.shop_pass = 'dummmy shop_pass'
+param.access_id = 'dummmy access_id'
+param.access_pass = 'dummmy access_pass'
+param.order_id = 'dummmy order_id'
+
+if param.valid?
+  client.call_api(param)
+else
+  # エラー処理
+end
+```
+
+### ソフトバンクまとめて支払い(B)継続課金決済#取引状態参照
+
+##### Input
+| パラメータ名 | 必須 |
+|:-------------|:-----|
+| shop_id      | ○    |
+| shop_pass    | ○    |
+| access_id    | ○    |
+| access_pass  | ○    |
+| order_id     | ○    |
+
+
+##### Output
+- - status
+- - process_date
+- - job_cd
+- - access_id
+- - access_pass
+- - amount
+- - tax
+- - currency
+- - site_id
+- - member_id
+- - client_field_1
+- - client_field_2
+- - client_field_3
+- - pay_type
+- - payment_term
+- - err_code
+- - err_info
+- - sb_tracking_id
+- - sb_start_charge_month
+
+※詳細は最新版の「プロトコルタイプ(マルチ決済インターフェース仕様) 決済結果を参照する」を参照のこと
+
+##### Example
+
+```ruby
+param = GMOPaymentCarrier::SoftBank::Parameter.new(api_kind: GMOPaymentCarrier::SoftBank::Const::API_KIND_SEARCH)
 param.shop_id = 'dummmy shop_id'
 param.shop_pass = 'dummmy shop_pass'
 param.access_id = 'dummmy access_id'

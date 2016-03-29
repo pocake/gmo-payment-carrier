@@ -18,25 +18,25 @@ TODO
 
 現状サポートしているAPIは以下となります。
 
-- auかんたん決済継続課金
+ auかんたん決済継続課金
   - [取引登録 (/payment/EntryTranAuContinuance.idPass)](#auかんたん決済継続課金取引登録)
   - [決済実行 (/payment/EntryTranAuContinuance.idPass)](#auかんたん決済継続課金決済実行)
   - [継続課金解約 (/payment/AuContinuanceCancel.idPass)](#auかんたん決済継続課金継続課金解約)
   - [取引状態参照 (/payment/SearchTradeMulti.idPass)](#auかんたん決済継続課金取引状態参照)
-- ドコモ継続課金サービス決済
+ ドコモ継続課金サービス決済
   - [取引登録 (/payment/EntryTranDocomoContinuance.idPass)](#ドコモ継続課金サービス決済取引登録)
   - [決済実行 (/payment/ExecTranDocomoContinuance.idPass)](#ドコモ継続課金サービス決済決済実行)
   - [継続課金終了(利用者) (/payment/DocomoContinuanceUserEnd.idPass)](#ドコモ継続課金サービス決済継続課金終了利用者)
   - [取引状態参照 (/payment/SearchTradeMulti.idPass)](#ドコモ継続課金サービス取引状態参照)
-- ソフトバンクまとめて支払い(B)継続課金決済
+ ソフトバンクまとめて支払い(B)継続課金決済
   - [取引登録 (/payment/EntryTranSbContinuance.idPass)](#ソフトバンクまとめて支払いB継続課金決済取引登録)
   - [決済実行 (/payment/ExecTranSbContinuance.idPass)](#ソフトバンクまとめて支払いB継続課金決済決済実行)
   - [継続課金解約 (/payment/SbContinuanceCancel.idPass)](#ソフトバンクまとめて支払いB継続課金決済継続課金解)
   - [取引状態参照 (/payment/SearchTradeMulti.idPass)](#ソフトバンクまとめて支払いB継続課金取引状態参照)
 
 また、以下のユーティリティな部品を用意してます
-- [各キャリアの課金結果ファイル(CSV)パーサー](#各キャリアの課金結果ファイルCSVパーサー)
-- RSpec Stub
+ [各キャリアの課金結果ファイル(CSV)パーサー](#各キャリアの課金結果ファイルCSVパーサー)
+ RSpec Stub
   - [auかんたん決済継続課金#取引登録#正常](#auかんたん決済継続課金取引登録正常)
   - [auかんたん決済継続課金#決済実行#正常](#auかんたん決済継続課金決済実行正常)
   - [auかんたん決済継続課金#継続課金解約#正常](#auかんたん決済継続課金継続課金解約正常)
@@ -74,8 +74,8 @@ client = GMOPaymentCarrier::Client.new(env :production)
 | access_id    | ×    |
 
 ##### Output
-- access_id
-- access_pass
+ access_id
+ access_pass
 
 ※詳細は最新版の「プロトコルタイプ(マルチ決済インターフェース仕様) auかんたん決済継続課金インターフェース仕様」を参照のこと
 
@@ -124,10 +124,10 @@ end
 | service_tel        | ○    |
 
 ##### Output
-- access_id
-- token
-- start_url
-- start_limit_date
+ access_id
+ token
+ start_url
+ start_limit_date
 
 ※詳細は最新版の「プロトコルタイプ(マルチ決済インターフェース仕様) auかんたん決済継続課金インターフェース仕様」を参照のこと
 
@@ -203,31 +203,31 @@ end
 
 
 ##### Output
-- - status
-- - process_date
-- - job_cd
-- - access_id
-- - access_pass
-- - amount
-- - tax
-- - currency
-- - site_id
-- - member_id
-- - client_field_1
-- - client_field_2
-- - client_field_3
-- - pay_type
-- - au_pay_method
-- - account_timing_kbn
-- - account_timing
-- - first_account_date
-- - first_amount
-- - first_tax
-- - au_continuance_err_code
-- - au_continuance_err_info
-- - au_continue_account_id
-- - err_code
-- - err_info
+- status
+- process_date
+- job_cd
+- access_id
+- access_pass
+- amount
+- tax
+- currency
+- site_id
+- member_id
+- client_field_1
+- client_field_2
+- client_field_3
+- pay_type
+- au_pay_method
+- account_timing_kbn
+- account_timing
+- first_account_date
+- first_amount
+- first_tax
+- au_continuance_err_code
+- au_continuance_err_info
+- au_continue_account_id
+- err_code
+- err_info
 
 ※詳細は最新版の「プロトコルタイプ(マルチ決済インターフェース仕様) 決済結果を参照する」を参照のこと
 
@@ -260,8 +260,8 @@ end
 | tax          | ×    |
 
 ##### Output
-- access_id
-- access_pass
+ access_id
+ access_pass
 
 ※詳細は最新版の「プロトコルタイプ(マルチ決済インターフェース仕様) ドコモ継続課金サービス決済インターフェース仕様」を参照のこと
 
@@ -305,10 +305,10 @@ end
 | disp_mail_address     | ×    |
 
 ##### Output
-- access_id
-- token
-- start_url
-- start_limit_date
+ access_id
+ token
+ start_url
+ start_limit_date
 
 ※詳細は最新版の「プロトコルタイプ(マルチ決済インターフェース仕様) ドコモ継続課金サービス決済インターフェース仕様」を参照のこと
 
@@ -389,25 +389,25 @@ end
 
 
 ##### Output
-- status
-- process_date
-- job_cd
-- access_id
-- access_pass
-- amount
-- tax
-- currency
-- site_id
-- member_id
-- client_field_1
-- client_field_2
-- client_field_3
-- pay_type
-- err_code
-- err_info
-- docomo_settlement_code
-- docomo_cancel_amount
-- docomo_cancel_tax
+ status
+ process_date
+ job_cd
+ access_id
+ access_pass
+ amount
+ tax
+ currency
+ site_id
+ member_id
+ client_field_1
+ client_field_2
+ client_field_3
+ pay_type
+ err_code
+ err_info
+ docomo_settlement_code
+ docomo_cancel_amount
+ docomo_cancel_tax
 
 ※詳細は最新版の「プロトコルタイプ(マルチ決済インターフェース仕様) 決済結果を参照する」を参照のこと
 
@@ -440,8 +440,8 @@ end
 | tax          | ×    |
 
 ##### Output
-- access_id
-- access_pass
+ access_id
+ access_pass
 
 ※詳細は最新版の「プロトコルタイプ(マルチ決済インターフェース仕様) ソフトバンクまとめて支払い(B)継続課金決済インターフェース仕様」を参照のこと
 
@@ -480,10 +480,10 @@ end
 | first_month_free_flag | ○    |
 
 ##### Output
-- access_id
-- token
-- start_url
-- start_limit_date
+ access_id
+ token
+ start_url
+ start_limit_date
 
 ※詳細は最新版の「プロトコルタイプ(マルチ決済インターフェース仕様) ソフトバンクまとめて支払い(B)継続課金決済インターフェース仕様」を参照のこと
 
@@ -518,8 +518,8 @@ end
 | order_id     | ○    |
 
 ##### Output
-- order_id
-- status
+ order_id
+ status
 
 ※詳細は最新版の「プロトコルタイプ(マルチ決済インターフェース仕様) ソフトバンクまとめて支払い(B)継続課金決済インターフェース仕様」を参照のこと
 
@@ -553,25 +553,25 @@ end
 
 
 ##### Output
-- - status
-- - process_date
-- - job_cd
-- - access_id
-- - access_pass
-- - amount
-- - tax
-- - currency
-- - site_id
-- - member_id
-- - client_field_1
-- - client_field_2
-- - client_field_3
-- - pay_type
-- - payment_term
-- - err_code
-- - err_info
-- - sb_tracking_id
-- - sb_start_charge_month
+ - status
+ - process_date
+ - job_cd
+ - access_id
+ - access_pass
+ - amount
+ - tax
+ - currency
+ - site_id
+ - member_id
+ - client_field_1
+ - client_field_2
+ - client_field_3
+ - pay_type
+ - payment_term
+ - err_code
+ - err_info
+ - sb_tracking_id
+ - sb_start_charge_month
 
 ※詳細は最新版の「プロトコルタイプ(マルチ決済インターフェース仕様) 決済結果を参照する」を参照のこと
 

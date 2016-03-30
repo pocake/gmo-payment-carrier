@@ -48,7 +48,13 @@ module GMOPaymentCarrier
         # 支払開始期限秒
         :payment_term_sec,
         # 支払い種別
-        :pay_type
+        :pay_type,
+        # ジョブコード
+        :job_cd,
+        # 支払開始期限
+        :payment_term,
+        # 課金開始月
+        :start_charge_month
       ] | extension_attribute_names
     end
 

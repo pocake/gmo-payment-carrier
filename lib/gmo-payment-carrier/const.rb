@@ -109,7 +109,9 @@ module GMOPaymentCarrier
       docomo_cancel_amount:    'DocomoCancelAmount',
       docomo_cancel_tax:       'DocomoCancelTax',
       payment_term:            'PaymentTerm',
-      sb_start_charge_month:   'SbStartChargeMonth'
+      sb_start_charge_month:   'SbStartChargeMonth',
+      process_date:            'ProcessDate',
+      job_cd:                  'JobCd'
     }.with_indifferent_access
     PARAM_NAMES_INVERTED = PARAM_NAMES.invert
 

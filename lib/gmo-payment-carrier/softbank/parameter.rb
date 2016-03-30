@@ -8,7 +8,11 @@ module GMOPaymentCarrier
           # 課金基準日
           :charge_day,
           # 初月無料フラグ
-          :first_month_free_flag
+          :first_month_free_flag,
+          # SBトラッッキングID
+          :sb_tracking_id,
+          # 課金開始月
+          :sb_start_charge_month
         ]
       end
 

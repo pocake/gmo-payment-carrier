@@ -20,7 +20,11 @@ module GMOPaymentCarrier
           # メールアドレス
           :disp_mail_address,
           # 終了月無料区分
-          :last_month_free_flag
+          :last_month_free_flag,
+          # docomoキャンセル額
+          :docomo_cancel_amount,
+          # docomoキャンセル税
+          :docomo_cancel_tax
         ]
       end
 

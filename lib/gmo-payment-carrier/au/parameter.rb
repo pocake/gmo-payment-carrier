@@ -32,7 +32,13 @@ module GMOPaymentCarrier
           # 継続課金ID
           :aucontinu_accountid,
           # 支払方法
-          :au_pay_method
+          :au_pay_method,
+          # auエラーコード
+          :au_continuance_err_code,
+          # auエラー情報
+          :au_continuance_err_info,
+          # auアカウントID
+          :au_continue_account_id
         ]
       end
 

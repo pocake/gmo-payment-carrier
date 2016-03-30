@@ -54,7 +54,9 @@ module GMOPaymentCarrier
         # 支払開始期限
         :payment_term,
         # 課金開始月
-        :start_charge_month
+        :start_charge_month,
+        # 処理日付
+        :process_date
       ] | extension_attribute_names
     end
 

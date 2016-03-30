@@ -31,7 +31,11 @@ module GMOPaymentCarrier
     end
 
     def self.parse_query(query_string)
-      query_string.split('&').map{ |str| str.split('=') }.to_h.with_indifferent_access
+      query_string.split('&').map { |str|
+        key_value_pair = str.split('=')
+        next unless key_value_pair.length == 2
+        key_value_pair
+      }.compact.to_h.with_indifferent_access
     end
     private_class_method :parse_query
   end

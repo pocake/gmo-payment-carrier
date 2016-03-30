@@ -69,8 +69,6 @@ module GMOPaymentCarrier
             [
               :shop_id,
               :shop_pass,
-              :access_id,
-              :access_pass,
               :order_id,
               :pay_type
             ]

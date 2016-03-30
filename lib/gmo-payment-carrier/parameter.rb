@@ -46,7 +46,9 @@ module GMOPaymentCarrier
         # 支払開始期限日時
         :start_limit_date,
         # 支払開始期限秒
-        :payment_term_sec
+        :payment_term_sec,
+        # 支払い種別
+        :pay_type
       ] | extension_attribute_names
     end
 

@@ -3,6 +3,7 @@ module GMOPaymentCarrier
     def self.encode(mapping_klass:, query_string:)
       mapping_klass.new.tap do |result|
         parse_query(query_string).each do |k, v|
+          next unless Const::PARAM_NAMES_INVERTED.has_key?(k)
           result.send("#{Const::PARAM_NAMES_INVERTED[k]}=", v)
         end
       end
@@ -11,6 +12,7 @@ module GMOPaymentCarrier
     def self.encode_for_params(params)
       Hashie::Mash.new.tap do |result|
         params.each do |k, v|
+          next unless Const::PARAM_NAMES_INVERTED.has_key?(k)
           result.send("#{Const::PARAM_NAMES_INVERTED[k]}=", v)
         end
       end

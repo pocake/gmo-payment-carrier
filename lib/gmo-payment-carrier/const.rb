@@ -115,6 +115,12 @@ module GMOPaymentCarrier
     }.with_indifferent_access
     PARAM_NAMES_INVERTED = PARAM_NAMES.invert
 
+    CONTINUANCE_PAY_TYPES = [
+      GMOPaymentCarrier::AU::Const::PAY_TYPE,
+      GMOPaymentCarrier::Docomo::Const::PAY_TYPE,
+      GMOPaymentCarrier::SoftBank::Const::PAY_TYPE
+    ]
+
     # TODO: 実装が大体終わった最後の方に頑張って追加する...
     ERROR_MESSAGES = {
       M01001005: 'バージョンの文字数が最大文字数を超えています',

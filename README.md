@@ -23,19 +23,23 @@ TODO
   - [決済実行 (/payment/EntryTranAuContinuance.idPass)](#auかんたん決済継続課金決済実行)
   - [継続課金解約 (/payment/AuContinuanceCancel.idPass)](#auかんたん決済継続課金継続課金解約)
   - [取引状態参照 (/payment/SearchTradeMulti.idPass)](#auかんたん決済継続課金取引状態参照)
- ドコモ継続課金サービス決済
+
+ドコモ継続課金サービス決済
   - [取引登録 (/payment/EntryTranDocomoContinuance.idPass)](#ドコモ継続課金サービス決済取引登録)
   - [決済実行 (/payment/ExecTranDocomoContinuance.idPass)](#ドコモ継続課金サービス決済決済実行)
   - [継続課金終了(利用者) (/payment/DocomoContinuanceUserEnd.idPass)](#ドコモ継続課金サービス決済継続課金終了利用者)
   - [取引状態参照 (/payment/SearchTradeMulti.idPass)](#ドコモ継続課金サービス取引状態参照)
- ソフトバンクまとめて支払い(B)継続課金決済
+
+ソフトバンクまとめて支払い(B)継続課金決済
   - [取引登録 (/payment/EntryTranSbContinuance.idPass)](#ソフトバンクまとめて支払いB継続課金決済取引登録)
   - [決済実行 (/payment/ExecTranSbContinuance.idPass)](#ソフトバンクまとめて支払いB継続課金決済決済実行)
   - [継続課金解約 (/payment/SbContinuanceCancel.idPass)](#ソフトバンクまとめて支払いB継続課金決済継続課金解)
   - [取引状態参照 (/payment/SearchTradeMulti.idPass)](#ソフトバンクまとめて支払いB継続課金取引状態参照)
 
 また、以下のユーティリティな部品を用意してます
- [各キャリアの課金結果ファイル(CSV)パーサー](#各キャリアの課金結果ファイルCSVパーサー)
+
+ - [各キャリアの課金結果ファイル(CSV)パーサー](#各キャリアの課金結果ファイルcsvパーサー)
+
  RSpec Stub
   - [auかんたん決済継続課金#取引登録#正常](#auかんたん決済継続課金取引登録正常)
   - [auかんたん決済継続課金#決済実行#正常](#auかんたん決済継続課金決済実行正常)

@@ -60,7 +60,7 @@ describe GMOPaymentCarrier::CsvParser do
     end
 
     context 'carrier softbank' do
-      let(:filepath) { File.expand_path('../fixtures/SB_S_tshopxxxx_yyyymmdd.csv', current_path) }
+    let(:filepath) { File.expand_path('../fixtures/SB_A_tshopxxxx_yyyymmdd.csv', current_path) }
 
       it 'success parce' do
         GMOPaymentCarrier::CsvParser.parse(filepath) do |csv|

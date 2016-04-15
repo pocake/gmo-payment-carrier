@@ -9,7 +9,9 @@ module GMOPaymentCarrier
           if File.basename(filepath).start_with?('AU')
             GMOPaymentCarrier::AU::Csv.new(row)
           elsif File.basename(filepath).start_with?('R')
-            GMOPaymentCarrier::Docomo::Csv.new(row)
+            GMOPaymentCarrier::Docomo::CsvOrder.new(row)
+          elsif File.basename(filepath).start_with?('C')
+            GMOPaymentCarrier::Docomo::CsvBilling.new(row)
           elsif File.basename(filepath).start_with?('SB_A')
             GMOPaymentCarrier::SoftBank::Csv.new(row)
           end

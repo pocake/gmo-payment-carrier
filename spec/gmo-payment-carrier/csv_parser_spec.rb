@@ -24,7 +24,7 @@ describe GMOPaymentCarrier::CsvParser do
       end
     end
 
-    context 'carrier docomo' do
+    context 'carrier docomo and OrderFile' do
       let(:filepath) { File.expand_path('../fixtures/R_tshopxxxx_yyyymmdd.csv', current_path) }
 
       it 'success parce' do
@@ -52,6 +52,32 @@ describe GMOPaymentCarrier::CsvParser do
           expect(csv.first_month_free_flag.present?).to be true
           expect(csv.end_month_free_flag.present?).to be true
           expect(csv.continue_billing_end_date.present?).to be true
+          expect(csv.err_code.blank?).to be true
+          expect(csv.err_info.blank?).to be true
+          expect(csv.tran_date.present?).to be true
+        end
+      end
+    end
+
+    context 'carrier docomo and BillingFile' do
+      let(:filepath) { File.expand_path('../fixtures/C_tshopxxxx_yyyymmdd.csv', current_path) }
+
+      it 'success parse' do
+        GMOPaymentCarrier::CsvParser.parse(filepath) do |csv|
+          expect(csv.docomo?).to be true
+          expect(csv.shop_id.present?).to be true
+          expect(csv.order_id.present?).to be true
+          expect(csv.charge_month.present?).to be true
+          expect(csv.status.present?).to be true
+          expect(csv.amount.present?).to be true
+          expect(csv.tax.present?).to be true
+          expect(csv.canceled_amount.blank?).to be true
+          expect(csv.canceled_tax.blank?).to be true
+          expect(csv.tran_id.present?).to be true
+          expect(csv.tran_pass.present?).to be true
+          expect(csv.docomo_tran_number.present?).to be true
+          expect(csv.docomo_merchant_order_number.present?).to be true
+          expect(csv.tran_limit_date.present?).to be true
           expect(csv.err_code.blank?).to be true
           expect(csv.err_info.blank?).to be true
           expect(csv.tran_date.present?).to be true

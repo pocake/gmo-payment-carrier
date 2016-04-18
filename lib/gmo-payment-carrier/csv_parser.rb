@@ -12,7 +12,7 @@ module GMOPaymentCarrier
             GMOPaymentCarrier::Docomo::CsvOrder.new(row)
           elsif File.basename(filepath).start_with?('C')
             GMOPaymentCarrier::Docomo::CsvBilling.new(row)
-          elsif File.basename(filepath).start_with?('SB_A')
+          elsif File.basename(filepath).start_with?('SB_A', 'SB_S')
             GMOPaymentCarrier::SoftBank::Csv.new(row)
           end
         raise "Failed to matching csv file. file path: #{filepath}" unless csv

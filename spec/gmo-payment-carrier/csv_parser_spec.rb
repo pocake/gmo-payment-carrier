@@ -67,7 +67,7 @@ describe GMOPaymentCarrier::CsvParser do
           expect(csv.docomo?).to be true
           expect(csv.shop_id.present?).to be true
           expect(csv.order_id.present?).to be true
-          expect(csv.charge_month.present?).to be true
+          expect(csv.billing_month.present?).to be true
           expect(csv.status.present?).to be true
           expect(csv.amount.present?).to be true
           expect(csv.tax.present?).to be true

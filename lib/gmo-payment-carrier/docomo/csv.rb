@@ -1,6 +1,7 @@
 module GMOPaymentCarrier
   module Docomo
-    class Csv < GMOPaymentCarrier::Csv
+    # ドコモ申込状況ファイルのParse用
+    class CsvOrder < GMOPaymentCarrier::Csv
       ATTR_NAMES = [
         # ショップID
         :shop_id,
@@ -46,6 +47,46 @@ module GMOPaymentCarrier
         :end_month_free_flag,
         # 継続課金終了日
         :continue_billing_end_date,
+        # エラーコード
+        :err_code,
+        # エラー詳細コード
+        :err_info,
+        # 処理日時
+        :tran_date
+      ]
+
+      genarate_attrs ATTR_NAMES
+    end
+
+    # ドコモ日次課金ファイルのParse用
+    class CsvBilling < GMOPaymentCarrier::Csv
+      ATTR_NAMES = [
+        # ショップID
+        :shop_id,
+        # オーダID
+        :order_id,
+        # 課金月
+        :billing_month,
+        # 取引状態
+        :status,
+        # 利用金額
+        :amount,
+        # 税送料,
+        :tax,
+        # キャンセル金額
+        :canceled_amount,
+        # キャンセル税送料
+        :canceled_tax,
+        # 取引ID
+        :tran_id,
+        # 取引パスワード
+        :tran_pass,
+        # ドコモ決済番号
+        :docomo_tran_number,
+        # ドコモ加盟店注文番号
+        :docomo_merchant_order_number,
+        # 処理期限
+        :tran_limit_date,
         # エラーコード
         :err_code,
         # エラー詳細コード

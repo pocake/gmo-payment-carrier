@@ -9,7 +9,7 @@ module GMOPaymentCarrier
     end
 
     def docomo?
-      self.is_a?(GMOPaymentCarrier::Docomo::Csv)
+      self.is_a?(GMOPaymentCarrier::Docomo::CsvOrder) || self.is_a?(GMOPaymentCarrier::Docomo::CsvBilling)
     end
 
     def softbank?

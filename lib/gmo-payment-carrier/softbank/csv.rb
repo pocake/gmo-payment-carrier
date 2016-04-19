@@ -7,7 +7,7 @@ module GMOPaymentCarrier
         # オーダID
         :order_id,
         # 課金日
-        :charge_day,
+        :billing_date,
         # 取引状態
         :status,
         # 利用金額

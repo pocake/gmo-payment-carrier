@@ -24,7 +24,9 @@ module GMOPaymentCarrier
           # docomoキャンセル額
           :docomo_cancel_amount,
           # docomoキャンセル税
-          :docomo_cancel_tax
+          :docomo_cancel_tax,
+          # docomo決済コード
+          :docomo_settlement_code
         ]
       end
 

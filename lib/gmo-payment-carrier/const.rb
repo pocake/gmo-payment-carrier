@@ -112,7 +112,7 @@ module GMOPaymentCarrier
       sb_start_charge_month:   'SbStartChargeMonth',
       process_date:            'ProcessDate',
       job_cd:                  'JobCd',
-      last_month_free_flag:    'lastMonthFreeFlag'
+      last_month_free_flag:    'LastMonthFreeFlag'
     }.with_indifferent_access
     PARAM_NAMES_INVERTED = PARAM_NAMES.invert
 

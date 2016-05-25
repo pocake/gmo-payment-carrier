@@ -23,6 +23,9 @@ module GMOPaymentCarrier
       CONFIRM_BASE_DATE_20      = 20
       CONFIRM_BASE_DATE_25      = 25
       CONFIRM_BASE_DATE_31      = 31
+      # 終了月無料区分
+      LAST_MONTH_FREE_FLAG_OFF  = 0 # 終了無料にしない
+      LAST_MONTH_FREE_FLAG_ON   = 1 # 終了無料にする
 
       # 支払い区分
       PAY_TYPE = 10

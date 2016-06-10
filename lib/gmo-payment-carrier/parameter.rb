@@ -26,9 +26,9 @@ module GMOPaymentCarrier
         # 加盟店自由項目1
         :client_field_1,
         # 加盟店自由項目2
-        :client_Field_2,
+        :client_field_2,
         # 加盟店自由項目3
-        :client_Field_3,
+        :client_field_3,
         # 決済結果戻しURL
         :ret_url,
         # 現状態

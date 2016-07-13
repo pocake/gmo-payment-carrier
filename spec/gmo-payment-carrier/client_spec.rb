@@ -305,7 +305,7 @@ describe GMOPaymentCarrier::Client do
         end
       end
 
-      context "docomo_continuance_user_end" do
+      context "docomo_continuance_shop_end" do
         let(:parameter) do
           GMOPaymentCarrier::Docomo::Parameter.new(
             api_kind: GMOPaymentCarrier::Docomo::Const::API_KIND_CANCEL

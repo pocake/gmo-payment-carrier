@@ -30,7 +30,7 @@ module GMOPaymentCarrier
           method: :post
         }
         h[GMOPaymentCarrier::Docomo::Const::API_KIND_CANCEL] = {
-          path: '/payment/DocomoContinuanceUserEnd.idPass',
+          path: '/payment/DocomoContinuanceShopEnd.idPass',
           method: :post
         }
         h[GMOPaymentCarrier::Docomo::Const::API_KIND_SEARCH] = {

@@ -73,14 +73,14 @@ describe GMOPaymentCarrier::AU::Parameter do
     end
   end
 
-  describe 'docomo_continuance_user_end' do
+  describe 'docomo_continuance_shop_end' do
     let(:target) do
       GMOPaymentCarrier::Docomo::Parameter.new(
         api_kind: GMOPaymentCarrier::Docomo::Const::API_KIND_CANCEL
       )
     end
 
-    it 'docomo_continuance_user_end parameter invalid' do
+    it 'docomo_continuance_shop_end parameter invalid' do
       target.valid?
 
       expect(target.errors[:shop_id].present?).to be true
@@ -90,7 +90,7 @@ describe GMOPaymentCarrier::AU::Parameter do
       expect(target.errors[:order_id].present?).to be true
     end
 
-    it 'docomo_continuance_user_end parameter valid' do
+    it 'docomo_continuance_shop_end parameter valid' do
       target.shop_id = 'dummmy shop_id'
       target.shop_pass = 'dummmy shop_pass'
       target.access_id = 'dummmy access_id'

@@ -9,6 +9,8 @@ module GMOPaymentCarrier
           validate_exec(record)
         when Const::API_KIND_CANCEL
           validate_cancel(record)
+        when Const::API_KIND_USER_CANCEL
+          validate_user_cancel(record)
         when Const::API_KIND_SEARCH
           validate_search(record)
         else
@@ -55,6 +57,22 @@ module GMOPaymentCarrier
               :access_id,
               :access_pass,
               :order_id
+            ]
+          )
+        end
+
+        def validate_user_cancel(record)
+          validate_presence(
+            record,
+            [
+              :shop_id,
+              :shop_pass,
+              :access_id,
+              :access_pass,
+              :order_id,
+              :amount,
+              :ret_url,
+              :last_month_free_flag
             ]
           )
         end

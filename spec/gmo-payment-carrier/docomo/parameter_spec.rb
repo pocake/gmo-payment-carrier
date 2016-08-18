@@ -106,4 +106,47 @@ describe GMOPaymentCarrier::AU::Parameter do
       expect(target.errors[:order_id].blank?).to be true
     end
   end
+
+  describe 'docomo_continuance_user_end' do
+    let(:target) do
+      GMOPaymentCarrier::Docomo::Parameter.new(
+        api_kind: GMOPaymentCarrier::Docomo::Const::API_KIND_USER_CANCEL
+      )
+    end
+
+    it 'docomo_continuance_user_end parameter invalid' do
+      target.valid?
+
+      expect(target.errors[:shop_id].present?).to be true
+      expect(target.errors[:shop_pass].present?).to be true
+      expect(target.errors[:access_id].present?).to be true
+      expect(target.errors[:access_pass].present?).to be true
+      expect(target.errors[:order_id].present?).to be true
+      expect(target.errors[:amount].present?).to be true
+      expect(target.errors[:ret_url].present?).to be true
+      expect(target.errors[:last_month_free_flag].present?).to be true
+    end
+
+    it 'docomo_continuance_user_end parameter valid' do
+      target.shop_id = 'dummmy shop_id'
+      target.shop_pass = 'dummmy shop_pass'
+      target.access_id = 'dummmy access_id'
+      target.access_pass = 'dummmy access_pass'
+      target.order_id = 'dummmy order_id'
+      target.amount = 'dummy amount'
+      target.ret_url = 'dummy ret_url'
+      target.last_month_free_flag = 'dummy last_month_free_flag'
+
+      target.valid?
+
+      expect(target.errors[:shop_id].blank?).to be true
+      expect(target.errors[:shop_pass].blank?).to be true
+      expect(target.errors[:access_id].blank?).to be true
+      expect(target.errors[:access_pass].blank?).to be true
+      expect(target.errors[:order_id].blank?).to be true
+      expect(target.errors[:amount].blank?).to be true
+      expect(target.errors[:ret_url].blank?).to be true
+      expect(target.errors[:last_month_free_flag].blank?).to be true
+    end
+  end
 end

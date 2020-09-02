@@ -21,6 +21,10 @@ module GMOPaymentCarrier
           path: '/payment/SearchTradeMulti.idPass',
           method: :post
         }
+        h[GMOPaymentCarrier::AU::Const::API_KIND_CHARGE_CANCEL] = {
+          path: '/payment/AuContinuanceChargeCancel.idPass',
+          method: :post
+        }
         h[GMOPaymentCarrier::Docomo::Const::API_KIND_ENTRY] = {
           path: '/payment/EntryTranDocomoContinuance.idPass',
           method: :post
@@ -41,6 +45,10 @@ module GMOPaymentCarrier
           path: '/payment/SearchTradeMulti.idPass',
           method: :post
         }
+        h[GMOPaymentCarrier::Docomo::Const::API_KIND_CHARGE_CANCEL] = {
+          path: '/payment/DocomoContinuanceCancelReturn.idPass',
+          method: :post
+        }
         h[GMOPaymentCarrier::SoftBank::Const::API_KIND_ENTRY] = {
           path: '/payment/EntryTranSbContinuance.idPass',
           method: :post
@@ -55,6 +63,10 @@ module GMOPaymentCarrier
         }
         h[GMOPaymentCarrier::SoftBank::Const::API_KIND_SEARCH] = {
           path: '/payment/SearchTradeMulti.idPass',
+          method: :post
+        }
+        h[GMOPaymentCarrier::SoftBank::Const::API_KIND_CHARGE_CANCEL] = {
+          path: '/payment/SbContinuanceChargeCancel.idPass',
           method: :post
         }
       end
@@ -116,7 +128,10 @@ module GMOPaymentCarrier
       sb_start_charge_month:   'SbStartChargeMonth',
       process_date:            'ProcessDate',
       job_cd:                  'JobCd',
-      last_month_free_flag:    'LastMonthFreeFlag'
+      last_month_free_flag:    'LastMonthFreeFlag',
+      continuance_month:       'ContinuanceMonth',
+      cancel_amount:           'CancelAmount',
+      cancel_tax:              'CancelTax',
     }.with_indifferent_access
     PARAM_NAMES_INVERTED = PARAM_NAMES.invert
 
@@ -236,6 +251,10 @@ module GMOPaymentCarrier
       M01080013: '摘要に利用できない文字が含まれています',
       M01081011: '決済結果URL有効期限秒が有効な範囲ではありません',
       M01081013: '決済結果URL有効期限秒に利用できない文字が含まれています',
+      M01085001: 'キャンセル金額が指定されていません',
+      M01086001: 'キャンセル税送料が指定されていません',
+      M01096010: '前回実行した処理から規定時間が経過していません',
+      M01204002: '指定された取引が存在しません'
     }.with_indifferent_access
   end
 end

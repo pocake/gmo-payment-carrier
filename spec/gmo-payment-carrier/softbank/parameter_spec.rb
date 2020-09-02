@@ -106,4 +106,37 @@ describe GMOPaymentCarrier::AU::Parameter do
       expect(target.errors[:order_id].blank?).to be true
     end
   end
+
+  describe 'sb_continuance_charge_cancel' do
+    let(:target) do
+      GMOPaymentCarrier::SoftBank::Parameter.new(
+        api_kind: GMOPaymentCarrier::SoftBank::Const::API_KIND_CHARGE_CANCEL
+      )
+    end
+
+    it 'sb_continuance_charge_cancel parameter invalid' do
+      target.valid?
+
+      expect(target.errors[:shop_id].present?).to be true
+      expect(target.errors[:shop_pass].present?).to be true
+      expect(target.errors[:access_id].present?).to be true
+      expect(target.errors[:access_pass].present?).to be true
+      expect(target.errors[:order_id].present?).to be true
+      expect(target.errors[:continuance_month].present?).to be true
+    end
+
+    it 'sb_continuance_charge_cancel parameter valid' do
+      target.shop_id = 'dummmy shop_id'
+      target.shop_pass = 'dummmy shop_pass'
+      target.order_id = 'dummmy order_id'
+      target.amount = 100
+
+      target.valid?
+
+      expect(target.errors[:shop_id].blank?).to be true
+      expect(target.errors[:shop_pass].blank?).to be true
+      expect(target.errors[:order_id].blank?).to be true
+      expect(target.errors[:amount].blank?).to be true
+    end
+  end
 end

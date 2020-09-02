@@ -2,16 +2,18 @@ module GMOPaymentCarrier
   module SoftBank
     module Const
       # API種別
-      API_KIND_ENTRY  = :entry_tran_sb_continuance
-      API_KIND_EXEC   = :exec_tran_sb_continuance
-      API_KIND_CANCEL = :sb_continuance_cancel
-      API_KIND_SEARCH = :sb_search
+      API_KIND_ENTRY         = :entry_tran_sb_continuance
+      API_KIND_EXEC          = :exec_tran_sb_continuance
+      API_KIND_CANCEL        = :sb_continuance_cancel
+      API_KIND_SEARCH        = :sb_search
+      API_KIND_CHARGE_CANCEL = :sb_continuance_charge_cancel
 
       API_KINDS = [
         API_KIND_ENTRY,
         API_KIND_EXEC,
         API_KIND_CANCEL,
-        API_KIND_SEARCH
+        API_KIND_SEARCH,
+        API_KIND_CHARGE_CANCEL
       ]
 
       # 初月無料区分

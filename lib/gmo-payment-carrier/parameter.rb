@@ -56,7 +56,13 @@ module GMOPaymentCarrier
         # 課金開始月
         :start_charge_month,
         # 処理日付
-        :process_date
+        :process_date,
+        # 課金月
+        :continuance_month,
+        # キャンセル金額
+        :cancel_amount,
+        # キャンセル税送料
+        :cancel_tax
       ] | extension_attribute_names
     end
 

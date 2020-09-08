@@ -1,0 +1,10 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: ruby:2.6.5
+
+    steps:
+      - checkout
+      - run: bundle install -j4 --path vendor/bundle
+      - run: bundle exec rspec

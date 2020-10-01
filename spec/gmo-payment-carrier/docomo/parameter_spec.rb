@@ -1,4 +1,4 @@
-describe GMOPaymentCarrier::AU::Parameter do
+describe GMOPaymentCarrier::Docomo::Parameter do
   describe 'entry_tran_docomo_continuance' do
     let(:target) do
       GMOPaymentCarrier::Docomo::Parameter.new(
@@ -147,6 +147,40 @@ describe GMOPaymentCarrier::AU::Parameter do
       expect(target.errors[:amount].blank?).to be true
       expect(target.errors[:ret_url].blank?).to be true
       expect(target.errors[:last_month_free_flag].blank?).to be true
+    end
+  end
+
+  describe 'docomo_continuance_cancel_return' do
+    let(:target) do
+      GMOPaymentCarrier::Docomo::Parameter.new(
+        api_kind: GMOPaymentCarrier::Docomo::Const::API_KIND_CHARGE_CANCEL
+      )
+    end
+
+    it 'docomo_continuance_cancel_return parameter invalid' do
+      target.valid?
+
+      expect(target.errors[:shop_id].present?).to be true
+      expect(target.errors[:shop_pass].present?).to be true
+      expect(target.errors[:access_id].present?).to be true
+      expect(target.errors[:access_pass].present?).to be true
+      expect(target.errors[:order_id].present?).to be true
+      expect(target.errors[:cancel_amount].present?).to be true
+      expect(target.errors[:continuance_month].present?).to be true
+    end
+
+    it 'docomo_continuance_cancel_return parameter valid' do
+      target.shop_id = 'dummmy shop_id'
+      target.shop_pass = 'dummmy shop_pass'
+      target.access_id = 'dummmy access_id'
+      target.access_pass = 'dummmy access_pass'
+      target.order_id = 'dummmy order_id'
+      target.cancel_amount = 100
+      target.continuance_month = 'dummmy continuance_month'
+
+      target.valid?
+
+      expect(target.errors.blank?).to be true
     end
   end
 end

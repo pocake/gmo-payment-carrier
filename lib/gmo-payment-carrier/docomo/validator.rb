@@ -13,6 +13,8 @@ module GMOPaymentCarrier
           validate_user_cancel(record)
         when Const::API_KIND_SEARCH
           validate_search(record)
+        when Const::API_KIND_CHARGE_CANCEL
+          validate_charge_cancel(record)
         else
           raise GMOPaymentCarrier::ValidationError.new("It is unexpected api_kind. api_kind=#{record.api_kind}")
         end
@@ -85,6 +87,21 @@ module GMOPaymentCarrier
               :shop_pass,
               :order_id,
               :pay_type
+            ]
+          )
+        end
+
+        def validate_charge_cancel(record)
+          validate_presence(
+            record,
+            [
+              :shop_id,
+              :shop_pass,
+              :access_id,
+              :access_pass,
+              :order_id,
+              :cancel_amount,
+              :continuance_month
             ]
           )
         end

@@ -3,7 +3,7 @@ module GMOPaymentCarrier
     class Client
       DEFAULT_HEADERS = {
         "Accept" => "application/json",
-        "User-Agent" => "Piese of Cake"
+        "User-Agent" => "note"
       }.freeze
 
       def initialize(endpoint:, request: :url_encoded, response: :logger)

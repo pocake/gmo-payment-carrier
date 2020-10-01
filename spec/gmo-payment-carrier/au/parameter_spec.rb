@@ -115,4 +115,40 @@ describe GMOPaymentCarrier::AU::Parameter do
       expect(target.errors[:order_id].blank?).to be true
     end
   end
+
+  describe 'au_continuance_charge_cancel' do
+    let(:target) do
+      GMOPaymentCarrier::AU::Parameter.new(
+        api_kind: GMOPaymentCarrier::AU::Const::API_KIND_CHARGE_CANCEL
+      )
+    end
+
+    it 'au_continuance_charge_cancel parameter invalid' do
+      target.valid?
+
+      expect(target.errors[:shop_id].present?).to be true
+      expect(target.errors[:shop_pass].present?).to be true
+      expect(target.errors[:access_id].present?).to be true
+      expect(target.errors[:access_pass].present?).to be true
+      expect(target.errors[:order_id].present?).to be true
+      expect(target.errors[:cancel_amount].present?).to be true
+      expect(target.errors[:cancel_tax].present?).to be true
+      expect(target.errors[:continuance_month].present?).to be true
+    end
+
+    it 'au_continuance_cancel parameter valid' do
+      target.shop_id = 'dummmy shop_id'
+      target.shop_pass = 'dummmy shop_pass'
+      target.access_id = 'dummmy access_id'
+      target.access_pass = 'dummmy access_pass'
+      target.order_id = 'dummmy order_id'
+      target.cancel_amount = 'dummmy cancel_amount'
+      target.cancel_tax = 'dummmy cancel_tax'
+      target.continuance_month = 'dummmy continuance_month'
+
+      target.valid?
+
+      expect(target.errors.blank?).to be true
+    end
+  end
 end

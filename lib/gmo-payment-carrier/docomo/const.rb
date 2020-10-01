@@ -2,18 +2,20 @@ module GMOPaymentCarrier
   module Docomo
     module Const
       # API種別
-      API_KIND_ENTRY       = :entry_tran_docomo_continuance
-      API_KIND_EXEC        = :exec_tran_docomo_continuance
-      API_KIND_CANCEL      = :docomo_continuance_shop_end
-      API_KIND_USER_CANCEL = :docomo_continuance_user_end
-      API_KIND_SEARCH      = :docomo_search
+      API_KIND_ENTRY         = :entry_tran_docomo_continuance
+      API_KIND_EXEC          = :exec_tran_docomo_continuance
+      API_KIND_CANCEL        = :docomo_continuance_shop_end
+      API_KIND_USER_CANCEL   = :docomo_continuance_user_end
+      API_KIND_SEARCH        = :docomo_search
+      API_KIND_CHARGE_CANCEL = :docomo_continuance_cancel_return
 
       API_KINDS = [
         API_KIND_ENTRY,
         API_KIND_EXEC,
         API_KIND_CANCEL,
         API_KIND_USER_CANCEL,
-        API_KIND_SEARCH
+        API_KIND_SEARCH,
+        API_KIND_CHARGE_CANCEL
       ]
 
       # 初月無料区分

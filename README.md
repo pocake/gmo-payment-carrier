@@ -829,3 +829,10 @@ describe 'when softbank cencel normality' do
   end
 end
 ```
+
+# 補足
+## ショップID/ショップパスワードの情報の確認場所
+http://www.gmo-payment-gateway.com/q005-shopid-shoppassword/
+
+## order idについて
+order idはPOC側で任意に決められる。

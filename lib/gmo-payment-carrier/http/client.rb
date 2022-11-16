@@ -46,7 +46,7 @@ module GMOPaymentCarrier
           Response.new(
             connection.send(
               request_method,
-              URI.escape(path),
+              path,
               params,
               headers,
             )
